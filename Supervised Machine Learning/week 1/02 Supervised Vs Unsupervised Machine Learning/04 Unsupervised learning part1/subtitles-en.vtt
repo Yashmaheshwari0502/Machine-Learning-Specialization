@@ -1,0 +1,612 @@
+WEBVTT
+
+1
+00:00:02.103 --> 00:00:03.797
+After supervised learning,
+
+2
+00:00:03.797 --> 00:00:08.003
+the most widely used form of machine
+learning is unsupervised learning.
+
+3
+00:00:08.003 --> 00:00:13.535
+Let's take a look at what that means,
+we've talked about supervised learning and
+
+4
+00:00:13.535 --> 00:00:16.551
+this video is about unsupervised learning.
+
+5
+00:00:16.551 --> 00:00:19.695
+But don't let the name uncivilized for
+you,
+
+6
+00:00:19.695 --> 00:00:24.754
+unsupervised learning is I think just
+as super as supervised learning.
+
+7
+00:00:24.754 --> 00:00:28.555
+When we're looking at supervised
+learning in the last video recalled,
+
+8
+00:00:28.555 --> 00:00:32.243
+it looks something like this in
+the case of a classification problem.
+
+9
+00:00:32.243 --> 00:00:37.538
+Each example, was associated with
+an output label y such as benign or
+
+10
+00:00:37.538 --> 00:00:43.493
+malignant, designated by the poles and
+crosses in unsupervised learning.
+
+11
+00:00:43.493 --> 00:00:48.773
+Were given data that isn't
+associated with any output labels y,
+
+12
+00:00:48.773 --> 00:00:55.214
+say you're given data on patients and
+their tumor size and the patient's age.
+
+13
+00:00:55.214 --> 00:00:59.733
+But not whether the tumor was benign or
+malignant, so
+
+14
+00:00:59.733 --> 00:01:03.257
+the dataset looks like this on the right.
+
+15
+00:01:03.257 --> 00:01:07.723
+We're not asked to diagnose
+whether the tumor is benign or
+
+16
+00:01:07.723 --> 00:01:11.652
+malignant, because we're
+not given any labels.
+
+17
+00:01:11.652 --> 00:01:16.304
+Why in the dataset, instead,
+our job is to find some structure or
+
+18
+00:01:16.304 --> 00:01:20.716
+some pattern or just find
+something interesting in the data.
+
+19
+00:01:20.716 --> 00:01:22.818
+This is unsupervised learning,
+
+20
+00:01:22.818 --> 00:01:27.856
+we call it unsupervised because we're
+not trying to supervise the algorithm.
+
+21
+00:01:27.856 --> 00:01:32.067
+To give some quote right answer for
+every input, instead,
+
+22
+00:01:32.067 --> 00:01:37.223
+we asked the our room to figure out
+all by yourself what's interesting.
+
+23
+00:01:37.223 --> 00:01:41.216
+Or what patterns or
+structures that might be in this data,
+
+24
+00:01:41.216 --> 00:01:43.417
+with this particular data set.
+
+25
+00:01:43.417 --> 00:01:47.056
+An unsupervised learning algorithm,
+might decide that
+
+26
+00:01:47.056 --> 00:01:51.918
+the data can be assigned to two different
+groups or two different clusters.
+
+27
+00:01:51.918 --> 00:01:58.550
+And so it might decide, that there's
+one cluster what group over here,
+
+28
+00:01:58.550 --> 00:02:03.130
+and there's another cluster or
+group over here.
+
+29
+00:02:03.130 --> 00:02:08.671
+This is a particular type of unsupervised
+learning, called a clustering algorithm.
+
+30
+00:02:08.671 --> 00:02:13.647
+Because it places the unlabeled data,
+into different clusters and
+
+31
+00:02:13.647 --> 00:02:17.151
+this turns out to be used
+in many applications.
+
+32
+00:02:17.151 --> 00:02:21.841
+For example,
+clustering is used in google news,
+
+33
+00:02:21.841 --> 00:02:25.870
+what google news does
+is every day it goes.
+
+34
+00:02:25.870 --> 00:02:29.784
+And looks at hundreds of thousands of
+news articles on the internet, and
+
+35
+00:02:29.784 --> 00:02:31.719
+groups related stories together.
+
+36
+00:02:31.719 --> 00:02:36.728
+For example, here is a sample from
+Google News, where the headline of the top
+
+37
+00:02:36.728 --> 00:02:41.831
+article, is giant panda gives birth to
+rear twin cubs at Japan's oldest zoo.
+
+38
+00:02:41.831 --> 00:02:46.566
+This article has actually caught my eye,
+because my daughter loves pandas and so
+
+39
+00:02:46.566 --> 00:02:48.664
+there are a lot of stuff panda toys.
+
+40
+00:02:48.664 --> 00:02:54.070
+And watching panda videos in my house,
+and looking at this,
+
+41
+00:02:54.070 --> 00:02:59.589
+you might notice that below this
+are other related articles.
+
+42
+00:02:59.589 --> 00:03:01.874
+Maybe from the headlines alone,
+
+43
+00:03:01.874 --> 00:03:05.633
+you can start to guess what
+clustering might be doing.
+
+44
+00:03:05.633 --> 00:03:11.249
+Notice that the word
+panda appears here here,
+
+45
+00:03:11.249 --> 00:03:16.577
+here, here and here and
+notice that the word
+
+46
+00:03:16.577 --> 00:03:21.481
+twin also appears in all five articles.
+
+47
+00:03:21.481 --> 00:03:25.692
+And the word Zoo also appears
+in all of these articles, so
+
+48
+00:03:25.692 --> 00:03:29.309
+the clustering algorithm
+is finding articles.
+
+49
+00:03:29.309 --> 00:03:34.080
+All of all the hundreds of thousands of
+news articles on the internet that day,
+
+50
+00:03:34.080 --> 00:03:39.161
+finding the articles that mention similar
+words and grouping them into clusters.
+
+51
+00:03:39.161 --> 00:03:43.857
+Now, what's cool is that this clustering
+algorithm figures out on his own which
+
+52
+00:03:43.857 --> 00:03:47.463
+words suggest, that certain
+articles are in the same group.
+
+53
+00:03:47.463 --> 00:03:52.133
+What I mean is there isn't an employee at
+google news who's telling the algorithm to
+
+54
+00:03:52.133 --> 00:03:54.128
+find articles that the word panda.
+
+55
+00:03:54.128 --> 00:03:57.500
+And twins and
+zoo to put them into the same cluster,
+
+56
+00:03:57.500 --> 00:03:59.783
+the news topics change every day.
+
+57
+00:03:59.783 --> 00:04:04.508
+And there are so many news stories,
+it just isn't feasible to people
+
+58
+00:04:04.508 --> 00:04:08.837
+doing this every single day for
+all the topics that use covers.
+
+59
+00:04:08.837 --> 00:04:14.188
+Instead the algorithm has to figure
+out on his own without supervision,
+
+60
+00:04:14.188 --> 00:04:17.622
+what are the clusters
+of news articles today.
+
+61
+00:04:17.622 --> 00:04:20.573
+So that's why this clustering algorithm,
+
+62
+00:04:20.573 --> 00:04:23.773
+is a type of unsupervised
+learning algorithm.
+
+63
+00:04:23.773 --> 00:04:28.249
+Let's look at the second example
+of unsupervised learning
+
+64
+00:04:28.249 --> 00:04:31.568
+applied to clustering genetic or DNA data.
+
+65
+00:04:31.568 --> 00:04:35.076
+This image shows a picture
+of DNA micro array data,
+
+66
+00:04:35.076 --> 00:04:38.189
+these look like tiny
+grids of a spreadsheet.
+
+67
+00:04:38.189 --> 00:04:44.724
+And each tiny column represents
+the genetic or DNA activity of one person,
+
+68
+00:04:44.724 --> 00:04:50.651
+So for example, this entire Column
+here is from one person's DNA.
+
+69
+00:04:50.651 --> 00:04:54.379
+And this other column
+is of another person,
+
+70
+00:04:54.379 --> 00:04:57.816
+each row represents a particular gene.
+
+71
+00:04:57.816 --> 00:05:03.442
+So just as an example, perhaps this
+role here might represent a gene that
+
+72
+00:05:03.442 --> 00:05:09.640
+affects eye color, or this role here is
+a gene that affects how tall someone is.
+
+73
+00:05:09.640 --> 00:05:14.580
+Researchers have even found a genetic
+link to whether someone dislikes certain
+
+74
+00:05:14.580 --> 00:05:19.015
+vegetables, such as broccoli, or
+brussels sprouts, or asparagus.
+
+75
+00:05:19.015 --> 00:05:23.588
+So next time someone asks you why
+didn't you finish your salad,
+
+76
+00:05:23.588 --> 00:05:28.003
+you can tell them,
+maybe it's genetic for DNA micro race.
+
+77
+00:05:28.003 --> 00:05:32.058
+The idea is to measure how much
+certain genes, are expressed for
+
+78
+00:05:32.058 --> 00:05:33.720
+each individual person.
+
+79
+00:05:33.720 --> 00:05:38.793
+So these colors red, green, gray,
+and so on, show the degree to
+
+80
+00:05:38.793 --> 00:05:44.446
+which different individuals do, or
+do not have a specific gene active.
+
+81
+00:05:44.446 --> 00:05:48.862
+And what you can do is then run
+a clustering algorithm to group
+
+82
+00:05:48.862 --> 00:05:51.986
+individuals into different categories.
+
+83
+00:05:51.986 --> 00:05:57.911
+Or different types of people like maybe
+these individuals that group together,
+
+84
+00:05:57.911 --> 00:06:00.533
+and let's just call this type one.
+
+85
+00:06:00.533 --> 00:06:04.742
+And these people
+are grouped into type two,
+
+86
+00:06:04.742 --> 00:06:08.851
+and these people are groups as type three.
+
+87
+00:06:08.851 --> 00:06:12.634
+This is unsupervised learning,
+because we're not telling the algorithm in
+
+88
+00:06:12.634 --> 00:06:16.254
+advance, that there is a type one
+person with certain characteristics.
+
+89
+00:06:16.254 --> 00:06:18.972
+Or a type two person with
+certain characteristics,
+
+90
+00:06:18.972 --> 00:06:21.824
+instead what we're saying
+is here's a bunch of data.
+
+91
+00:06:21.824 --> 00:06:25.171
+I don't know what the different
+types of people are but
+
+92
+00:06:25.171 --> 00:06:28.243
+can you automatically
+find structure into data.
+
+93
+00:06:28.243 --> 00:06:32.052
+And automatically figure out whether
+the major types of individuals,
+
+94
+00:06:32.052 --> 00:06:36.574
+since we're not giving the algorithm the
+right answer for the examples in advance.
+
+95
+00:06:36.574 --> 00:06:41.259
+This is unsupervised learning,
+here's the third example,
+
+96
+00:06:41.259 --> 00:06:47.215
+many companies have huge databases of
+customer information given this data.
+
+97
+00:06:47.215 --> 00:06:50.327
+Can you automatically
+group your customers,
+
+98
+00:06:50.327 --> 00:06:56.243
+into different market segments so that you
+can more efficiently serve your customers.
+
+99
+00:06:56.243 --> 00:07:00.551
+Concretely the deep learning dot AI team
+did some research to better understand
+
+100
+00:07:00.551 --> 00:07:02.553
+the deep learning dot AI community.
+
+101
+00:07:02.553 --> 00:07:06.354
+And why different individuals
+take these classes,
+
+102
+00:07:06.354 --> 00:07:11.459
+subscribed to the batch weekly newsletter,
+or attend our AI events.
+
+103
+00:07:11.459 --> 00:07:15.047
+Let's visualize the deep
+learning dot AI community,
+
+104
+00:07:15.047 --> 00:07:18.409
+as this collection of
+people running clustering.
+
+105
+00:07:18.409 --> 00:07:24.181
+That is market segmentation found
+a few distinct groups of individuals,
+
+106
+00:07:24.181 --> 00:07:30.242
+one group's primary motivation is
+seeking knowledge to grow their skills.
+
+107
+00:07:30.242 --> 00:07:32.933
+Perhaps this is you, and so that's great,
+
+108
+00:07:32.933 --> 00:07:38.043
+a second group's primary motivation is
+looking for a way to develop their career.
+
+109
+00:07:38.043 --> 00:07:40.819
+Maybe you want to get a promotion or
+a new job, or
+
+110
+00:07:40.819 --> 00:07:45.135
+make some career progression if this
+describes you, that's great too.
+
+111
+00:07:45.135 --> 00:07:49.975
+And yet another group wants to stay
+updated on how AI impacts their
+
+112
+00:07:49.975 --> 00:07:54.209
+field of work, perhaps this is you,
+that's great too.
+
+113
+00:07:54.209 --> 00:07:59.092
+This is a clustering that our team used
+to try to better serve our community
+
+114
+00:07:59.092 --> 00:08:01.237
+as we're trying to figure out.
+
+115
+00:08:01.237 --> 00:08:05.867
+Whether the major categories of learners
+in the deeper and community, So
+
+116
+00:08:05.867 --> 00:08:10.211
+if any of these is your top motivation for
+learning, that's great.
+
+117
+00:08:10.211 --> 00:08:15.052
+And I hope I'll be able to help you on
+your journey, or in case this is you, and
+
+118
+00:08:15.052 --> 00:08:19.615
+you want something totally different
+than the other three categories.
+
+119
+00:08:19.615 --> 00:08:24.086
+That's fine too, and I want you to know,
+I love you all the same, so
+
+120
+00:08:24.086 --> 00:08:26.688
+to summarize a clustering algorithm.
+
+121
+00:08:26.688 --> 00:08:30.144
+Which is a type of unsupervised
+learning algorithm,
+
+122
+00:08:30.144 --> 00:08:35.385
+takes data without labels and tries to
+automatically group them into clusters.
+
+123
+00:08:35.385 --> 00:08:39.278
+And so maybe the next time you see or
+think of a panda,
+
+124
+00:08:39.278 --> 00:08:42.211
+maybe you think of clustering as well.
+
+125
+00:08:42.211 --> 00:08:47.032
+And besides clustering, there are other
+types of unsupervised learning as well.
+
+126
+00:08:47.032 --> 00:08:48.558
+Let's go on to the next video,
+
+127
+00:08:48.558 --> 00:08:52.151
+to take a look at some other types
+of unsupervised learning algorithms.

@@ -1,0 +1,483 @@
+WEBVTT
+
+1
+00:00:02.177 --> 00:00:08.866
+So supervised learning algorithms learn to
+predict input, output or X to Y mapping.
+
+2
+00:00:08.866 --> 00:00:12.574
+And in the last video you saw
+that regression algorithms,
+
+3
+00:00:12.574 --> 00:00:17.568
+which is a type of supervised learning
+algorithm learns to predict numbers out
+
+4
+00:00:17.568 --> 00:00:20.081
+of infinitely many possible numbers.
+
+5
+00:00:20.081 --> 00:00:24.879
+There's a second major type of supervised
+learning algorithm called a classification
+
+6
+00:00:24.879 --> 00:00:25.603
+algorithm.
+
+7
+00:00:25.603 --> 00:00:28.935
+Let's take a look at what this means.
+
+8
+00:00:28.935 --> 00:00:35.102
+Take breast cancer detection as
+an example of a classification problem.
+
+9
+00:00:35.102 --> 00:00:37.819
+Say you're building
+a machine learning system so
+
+10
+00:00:37.819 --> 00:00:41.389
+that doctors can have a diagnostic
+tool to detect breast cancer.
+
+11
+00:00:41.389 --> 00:00:46.753
+This is important because early detection
+could potentially save a patient's life.
+
+12
+00:00:46.753 --> 00:00:51.784
+Using a patient's medical records
+your machine learning system tries to
+
+13
+00:00:51.784 --> 00:00:57.311
+figure out if a tumor that is a lump is
+malignant meaning cancerous or dangerous.
+
+14
+00:00:57.311 --> 00:01:02.171
+Or if that tumor, that lump is benign,
+meaning that it's just
+
+15
+00:01:02.171 --> 00:01:06.586
+a lump that isn't cancerous and
+isn't that dangerous?
+
+16
+00:01:06.586 --> 00:01:10.882
+Some of my friends have actually been
+working on this specific problem.
+
+17
+00:01:10.882 --> 00:01:15.552
+So maybe your dataset has
+tumors of various sizes.
+
+18
+00:01:15.552 --> 00:01:19.478
+And these tumors are labeled
+as either benign,
+
+19
+00:01:19.478 --> 00:01:23.504
+which I will designate in
+this example with a 0 or
+
+20
+00:01:23.504 --> 00:01:28.529
+malignant, which will designate
+in this example with a 1.
+
+21
+00:01:28.529 --> 00:01:33.075
+You can then plot your data
+on a graph like this where
+
+22
+00:01:33.075 --> 00:01:38.047
+the horizontal axis represents
+the size of the tumor and
+
+23
+00:01:38.047 --> 00:01:42.171
+the vertical axis takes
+on only two values 0 or
+
+24
+00:01:42.171 --> 00:01:48.023
+1 depending on whether the tumor
+is benign, 0 or malignant 1.
+
+25
+00:01:48.023 --> 00:01:48.873
+One reason that this is different from
+regression is that we're trying to predict
+
+26
+00:01:48.873 --> 00:01:49.471
+only a small number of possible outputs or
+categories.
+
+27
+00:01:49.471 --> 00:01:55.210
+In this case two possible
+
+28
+00:01:55.210 --> 00:01:59.308
+outputs 0 or 1,
+
+29
+00:01:59.308 --> 00:02:04.510
+benign or malignant.
+
+30
+00:02:04.510 --> 00:02:10.142
+This is different from regression
+which tries to predict any number,
+
+31
+00:02:10.142 --> 00:02:14.637
+all of the infinitely many
+number of possible numbers.
+
+32
+00:02:14.637 --> 00:02:18.768
+And so the fact that there
+are only two possible outputs is
+
+33
+00:02:18.768 --> 00:02:21.275
+what makes this classification.
+
+34
+00:02:21.275 --> 00:02:25.140
+Because there are only
+two possible outputs or
+
+35
+00:02:25.140 --> 00:02:28.708
+two possible categories in this example,
+
+36
+00:02:28.708 --> 00:02:32.887
+you can also plot this data
+set on a line like this.
+
+37
+00:02:32.887 --> 00:02:38.128
+Right now, I'm going to use two
+different symbols to denote
+
+38
+00:02:38.128 --> 00:02:43.677
+the category using a circle an O
+to denote the benign examples and
+
+39
+00:02:43.677 --> 00:02:47.395
+a cross to denote the malignant examples.
+
+40
+00:02:47.395 --> 00:02:51.724
+And if new patients walks in for
+a diagnosis and
+
+41
+00:02:51.724 --> 00:02:57.052
+they have a lump that is this size,
+then the question is,
+
+42
+00:02:57.052 --> 00:03:02.838
+will your system classify this
+tumor as benign or malignant?
+
+43
+00:03:02.838 --> 00:03:07.815
+It turns out that in classification
+problems you can also have more than two
+
+44
+00:03:07.815 --> 00:03:09.874
+possible output categories.
+
+45
+00:03:09.874 --> 00:03:14.594
+Maybe you're learning algorithm can
+output multiple types of cancer
+
+46
+00:03:14.594 --> 00:03:17.474
+diagnosis if it turns out to be malignant.
+
+47
+00:03:17.474 --> 00:03:22.497
+So let's call two different types
+of cancer type 1 and type 2.
+
+48
+00:03:22.497 --> 00:03:27.271
+In this case the average would
+have three possible output
+
+49
+00:03:27.271 --> 00:03:29.864
+categories it could predict.
+
+50
+00:03:29.864 --> 00:03:34.157
+And by the way in classification,
+the terms output classes and
+
+51
+00:03:34.157 --> 00:03:37.804
+output categories are often
+used interchangeably.
+
+52
+00:03:37.804 --> 00:03:42.255
+So what I say class or
+category when referring to the output,
+
+53
+00:03:42.255 --> 00:03:44.097
+it means the same thing.
+
+54
+00:03:44.097 --> 00:03:50.914
+So to summarize classification
+algorithms predict categories.
+
+55
+00:03:50.914 --> 00:03:52.754
+Categories don't have to be numbers.
+
+56
+00:03:52.754 --> 00:03:56.321
+It could be non numeric for example,
+
+57
+00:03:56.321 --> 00:04:01.737
+it can predict whether a picture
+is that of a cat or a dog.
+
+58
+00:04:01.737 --> 00:04:07.016
+And it can predict if a tumor is benign or
+malignant.
+
+59
+00:04:07.016 --> 00:04:12.930
+Categories can also be numbers like 0,
+1 or 0, 1, 2.
+
+60
+00:04:12.930 --> 00:04:17.932
+But what makes classification
+different from regression when
+
+61
+00:04:17.932 --> 00:04:23.312
+you're interpreting the numbers
+is that classification predicts
+
+62
+00:04:23.312 --> 00:04:29.253
+a small finite limited set of possible
+output categories such as 0, 1 and
+
+63
+00:04:29.253 --> 00:04:34.469
+2 but not all possible numbers
+in between like 0.5 or 1.7.
+
+64
+00:04:34.469 --> 00:04:40.601
+In the example of supervised
+learning that we've been looking at,
+
+65
+00:04:40.601 --> 00:04:45.023
+we had only one input value
+the size of the tumor.
+
+66
+00:04:45.023 --> 00:04:51.086
+But you can also use more than one
+input value to predict an output.
+
+67
+00:04:51.086 --> 00:04:55.773
+Here's an example,
+instead of just knowing the tumor size,
+
+68
+00:04:55.773 --> 00:04:59.391
+say you also have each
+patient's age in years.
+
+69
+00:04:59.391 --> 00:05:04.941
+Your new data set now has two inputs,
+age and tumor size.
+
+70
+00:05:04.941 --> 00:05:11.315
+What in this new dataset we're going to
+use circles to show patients whose tumors
+
+71
+00:05:11.315 --> 00:05:17.327
+are benign and crosses to show the
+patients with a tumor that was malignant.
+
+72
+00:05:17.327 --> 00:05:23.079
+So when a new patient comes in, the doctor
+can measure the patient's tumor size and
+
+73
+00:05:23.079 --> 00:05:25.394
+also record the patient's age.
+
+74
+00:05:25.394 --> 00:05:26.972
+And so given this,
+
+75
+00:05:26.972 --> 00:05:32.605
+how can we predict if this patient's
+tumor is benign or malignant?
+
+76
+00:05:32.605 --> 00:05:37.956
+Well, given the day said like this,
+what the learning algorithm might do
+
+77
+00:05:37.956 --> 00:05:44.105
+is find some boundary that separates out
+the malignant tumors from the benign ones.
+
+78
+00:05:44.105 --> 00:05:48.898
+So the learning algorithm has to
+decide how to fit a boundary line
+
+79
+00:05:48.898 --> 00:05:50.423
+through this data.
+
+80
+00:05:50.423 --> 00:05:54.681
+The boundary line found by the learning
+algorithm would help the doctor with
+
+81
+00:05:54.681 --> 00:05:55.620
+the diagnosis.
+
+82
+00:05:55.620 --> 00:06:00.795
+In this case the tumor is
+more likely to be benign.
+
+83
+00:06:00.795 --> 00:06:05.385
+From this example we have seen how
+to inputs the patient's age and
+
+84
+00:06:05.385 --> 00:06:07.060
+tumor size can be used.
+
+85
+00:06:07.060 --> 00:06:12.995
+In other machine learning problems often
+many more input values are required.
+
+86
+00:06:12.995 --> 00:06:17.813
+My friends who worked on breast cancer
+detection use many additional inputs,
+
+87
+00:06:17.813 --> 00:06:22.047
+like the thickness of the tumor clump,
+uniformity of the cell size,
+
+88
+00:06:22.047 --> 00:06:24.469
+uniformity of the cell shape and so on.
+
+89
+00:06:24.469 --> 00:06:29.585
+So to recap supervised learning
+maps input x to output y,
+
+90
+00:06:29.585 --> 00:06:35.673
+where the learning algorithm learns
+from the quote right answers.
+
+91
+00:06:35.673 --> 00:06:41.197
+The two major types of supervised learning
+our regression and classification.
+
+92
+00:06:41.197 --> 00:06:45.761
+In a regression application like
+predicting prices of houses, the learning
+
+93
+00:06:45.761 --> 00:06:50.618
+algorithm has to predict numbers from
+infinitely many possible output numbers.
+
+94
+00:06:50.618 --> 00:06:55.494
+Whereas in classification the learning
+algorithm has to make a prediction of
+
+95
+00:06:55.494 --> 00:06:58.802
+a category,
+all of a small set of possible outputs.
+
+96
+00:06:58.802 --> 00:07:01.880
+So you now know what is
+supervised learning,
+
+97
+00:07:01.880 --> 00:07:05.288
+including both regression and
+classification.
+
+98
+00:07:05.288 --> 00:07:06.902
+I hope you're having fun.
+
+99
+00:07:06.902 --> 00:07:10.468
+Next there's a second major
+type of machine learning
+
+100
+00:07:10.468 --> 00:07:12.694
+called unsupervised learning.
+
+101
+00:07:12.694 --> 00:07:15.560
+Let's go on to the next
+video to see what that is
