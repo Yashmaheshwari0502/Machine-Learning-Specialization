@@ -1,0 +1,978 @@
+WEBVTT
+
+1
+00:00:00.890 --> 00:00:03.690
+In this video,
+we'll look at what
+
+2
+00:00:03.690 --> 00:00:07.620
+the overall process of
+supervised learning is like.
+
+3
+00:00:07.620 --> 00:00:10.620
+Specifically, you see
+the first model of
+
+4
+00:00:10.620 --> 00:00:13.665
+this course, Linear
+Regression Model.
+
+5
+00:00:13.665 --> 00:00:17.010
+That just means fitting a
+straight line to your data.
+
+6
+00:00:17.010 --> 00:00:18.810
+It's probably the most
+
+7
+00:00:18.810 --> 00:00:21.540
+widely used learning
+algorithm in the world today.
+
+8
+00:00:21.540 --> 00:00:24.525
+As you get familiar
+with linear regression,
+
+9
+00:00:24.525 --> 00:00:28.215
+many of the concepts you
+see here will also apply to
+
+10
+00:00:28.215 --> 00:00:30.630
+other machine
+learning models that
+
+11
+00:00:30.630 --> 00:00:33.630
+you'll see later in
+this specialization.
+
+12
+00:00:33.630 --> 00:00:35.820
+Let's start with a
+problem that you can
+
+13
+00:00:35.820 --> 00:00:37.875
+address using linear regression.
+
+14
+00:00:37.875 --> 00:00:39.860
+Say you want to
+predict the price of
+
+15
+00:00:39.860 --> 00:00:42.080
+a house based on the
+size of the house.
+
+16
+00:00:42.080 --> 00:00:44.890
+This is the example we've
+seen earlier this week.
+
+17
+00:00:44.890 --> 00:00:47.060
+We're going to use a dataset on
+
+18
+00:00:47.060 --> 00:00:50.270
+house sizes and
+prices from Portland,
+
+19
+00:00:50.270 --> 00:00:52.520
+a city in the United States.
+
+20
+00:00:52.520 --> 00:00:53.990
+Here we have a graph where
+
+21
+00:00:53.990 --> 00:00:55.490
+the horizontal axis is
+
+22
+00:00:55.490 --> 00:00:57.485
+the size of the house
+in square feet,
+
+23
+00:00:57.485 --> 00:00:59.735
+and the vertical axis is
+
+24
+00:00:59.735 --> 00:01:03.065
+the price of a house in
+thousands of dollars.
+
+25
+00:01:03.065 --> 00:01:04.820
+Let's go ahead and plot
+
+26
+00:01:04.820 --> 00:01:07.700
+the data points for various
+houses in the dataset.
+
+27
+00:01:07.700 --> 00:01:09.515
+Here each data point,
+
+28
+00:01:09.515 --> 00:01:12.470
+each of these little
+crosses is a house with
+
+29
+00:01:12.470 --> 00:01:14.540
+the size and the price that
+
+30
+00:01:14.540 --> 00:01:17.170
+it most recently was sold for.
+
+31
+00:01:17.170 --> 00:01:19.530
+Now, let's say you're
+a real estate agent in
+
+32
+00:01:19.530 --> 00:01:23.235
+Portland and you're helping
+a client to sell her house.
+
+33
+00:01:23.235 --> 00:01:25.170
+She is asking you, how
+
+34
+00:01:25.170 --> 00:01:27.135
+much do you think I can
+get for this house?
+
+35
+00:01:27.135 --> 00:01:29.000
+This dataset might help you
+
+36
+00:01:29.000 --> 00:01:31.865
+estimate the price
+she could get for it.
+
+37
+00:01:31.865 --> 00:01:34.265
+You start by measuring
+the size of the house,
+
+38
+00:01:34.265 --> 00:01:38.900
+and it turns out that the
+house is 1250 square feet.
+
+39
+00:01:38.900 --> 00:01:41.660
+How much do you think this
+house could sell for?
+
+40
+00:01:41.660 --> 00:01:43.490
+One thing you could do this,
+
+41
+00:01:43.490 --> 00:01:44.660
+you can build a linear
+
+42
+00:01:44.660 --> 00:01:47.465
+regression model
+from this dataset.
+
+43
+00:01:47.465 --> 00:01:50.360
+Your model will fit a
+straight line to the data,
+
+44
+00:01:50.360 --> 00:01:52.615
+which might look like this.
+
+45
+00:01:52.615 --> 00:01:55.640
+Based on this straight
+line fit to the data,
+
+46
+00:01:55.640 --> 00:02:00.560
+you can see that the house
+is 1250 square feet,
+
+47
+00:02:00.560 --> 00:02:03.940
+it will intersect the
+best fit line over here,
+
+48
+00:02:03.940 --> 00:02:07.475
+and if you trace that to the
+vertical axis on the left,
+
+49
+00:02:07.475 --> 00:02:09.560
+you can see the price
+is maybe around
+
+50
+00:02:09.560 --> 00:02:12.865
+here, say about $220,000.
+
+51
+00:02:12.865 --> 00:02:15.020
+This is an example of what's
+
+52
+00:02:15.020 --> 00:02:17.615
+called a supervised
+learning model.
+
+53
+00:02:17.615 --> 00:02:19.535
+We call this supervised learning
+
+54
+00:02:19.535 --> 00:02:22.010
+because you are first
+training a model by giving
+
+55
+00:02:22.010 --> 00:02:24.920
+a data that has right
+answers because you get
+
+56
+00:02:24.920 --> 00:02:26.090
+the model examples of
+
+57
+00:02:26.090 --> 00:02:28.040
+houses with both the
+size of the house,
+
+58
+00:02:28.040 --> 00:02:29.750
+as well as the price that
+
+59
+00:02:29.750 --> 00:02:31.835
+the model should
+predict for each house.
+
+60
+00:02:31.835 --> 00:02:34.220
+Well, here are the
+prices, that is,
+
+61
+00:02:34.220 --> 00:02:35.990
+the right answers are given
+
+62
+00:02:35.990 --> 00:02:38.335
+for every house in the dataset.
+
+63
+00:02:38.335 --> 00:02:40.490
+This linear regression model is
+
+64
+00:02:40.490 --> 00:02:43.190
+a particular type of
+supervised learning model.
+
+65
+00:02:43.190 --> 00:02:46.100
+It's called regression model
+because it predicts numbers
+
+66
+00:02:46.100 --> 00:02:49.250
+as the output like
+prices in dollars.
+
+67
+00:02:49.250 --> 00:02:51.890
+Any supervised learning
+model that predicts
+
+68
+00:02:51.890 --> 00:02:55.610
+a number such as 220,000 or
+
+69
+00:02:55.610 --> 00:02:59.555
+1.5 or negative 33.2
+
+70
+00:02:59.555 --> 00:03:03.250
+is addressing what's called
+a regression problem.
+
+71
+00:03:03.250 --> 00:03:07.415
+Linear regression is one
+example of a regression model.
+
+72
+00:03:07.415 --> 00:03:09.410
+But there are other models for
+
+73
+00:03:09.410 --> 00:03:12.020
+addressing regression
+problems too.
+
+74
+00:03:12.020 --> 00:03:14.270
+We'll see some of those later in
+
+75
+00:03:14.270 --> 00:03:17.470
+Course 2 of this specialization.
+
+76
+00:03:17.470 --> 00:03:19.265
+Just to remind you,
+
+77
+00:03:19.265 --> 00:03:21.890
+in contrast with the
+regression model,
+
+78
+00:03:21.890 --> 00:03:24.020
+the other most common type of
+
+79
+00:03:24.020 --> 00:03:25.610
+supervised learning model is
+
+80
+00:03:25.610 --> 00:03:28.370
+called a classification model.
+
+81
+00:03:28.370 --> 00:03:30.800
+Classification model predicts
+
+82
+00:03:30.800 --> 00:03:33.455
+categories or
+discrete categories,
+
+83
+00:03:33.455 --> 00:03:36.725
+such as predicting if
+a picture is of a cat,
+
+84
+00:03:36.725 --> 00:03:38.150
+meow or a dog,
+
+85
+00:03:38.150 --> 00:03:41.405
+woof, or if given
+medical record,
+
+86
+00:03:41.405 --> 00:03:44.815
+it has to predict if a patient
+has a particular disease.
+
+87
+00:03:44.815 --> 00:03:46.580
+You'll see more about
+
+88
+00:03:46.580 --> 00:03:49.955
+classification models later
+in this course as well.
+
+89
+00:03:49.955 --> 00:03:51.500
+As a reminder about
+
+90
+00:03:51.500 --> 00:03:54.055
+the difference between
+classification and regression,
+
+91
+00:03:54.055 --> 00:03:55.850
+in classification, there are
+
+92
+00:03:55.850 --> 00:03:58.745
+only a small number
+of possible outputs.
+
+93
+00:03:58.745 --> 00:04:02.345
+If your model is recognizing
+cats versus dogs,
+
+94
+00:04:02.345 --> 00:04:05.045
+that's two possible outputs.
+
+95
+00:04:05.045 --> 00:04:08.030
+Or maybe you're trying
+to recognize any of
+
+96
+00:04:08.030 --> 00:04:12.220
+10 possible medical
+conditions in a patient,
+
+97
+00:04:12.220 --> 00:04:13.940
+so there's a discrete,
+
+98
+00:04:13.940 --> 00:04:16.175
+finite set of possible outputs.
+
+99
+00:04:16.175 --> 00:04:17.870
+We call it classification
+
+100
+00:04:17.870 --> 00:04:19.895
+problem, whereas in regression,
+
+101
+00:04:19.895 --> 00:04:22.070
+there are infinitely
+many possible numbers
+
+102
+00:04:22.070 --> 00:04:24.050
+that the model could output.
+
+103
+00:04:24.050 --> 00:04:25.940
+In addition to visualizing
+
+104
+00:04:25.940 --> 00:04:28.770
+this data as a plot
+here on the left,
+
+105
+00:04:28.770 --> 00:04:30.950
+there's one other
+way of looking at
+
+106
+00:04:30.950 --> 00:04:33.680
+the data that would be useful,
+
+107
+00:04:33.680 --> 00:04:38.395
+and that's a data table
+here on the right.
+
+108
+00:04:38.395 --> 00:04:41.820
+The data comprises
+a set of inputs.
+
+109
+00:04:41.820 --> 00:04:43.640
+This would be the
+size of the house,
+
+110
+00:04:43.640 --> 00:04:46.030
+which is this column here.
+
+111
+00:04:46.030 --> 00:04:48.870
+It also has outputs.
+
+112
+00:04:48.870 --> 00:04:51.450
+You're trying to
+predict the price,
+
+113
+00:04:51.450 --> 00:04:54.150
+which is this column here.
+
+114
+00:04:54.150 --> 00:04:58.460
+Notice that the horizontal
+and vertical axes
+
+115
+00:04:58.460 --> 00:05:00.865
+correspond to these two columns,
+
+116
+00:05:00.865 --> 00:05:04.850
+the size and the price.
+
+117
+00:05:04.850 --> 00:05:11.205
+If you have, say, 47
+rows in this data table,
+
+118
+00:05:11.205 --> 00:05:13.290
+then there are 47 of
+
+119
+00:05:13.290 --> 00:05:16.865
+these little crosses on
+the plot of the left,
+
+120
+00:05:16.865 --> 00:05:22.245
+each cross corresponding
+to one row of the table.
+
+121
+00:05:22.245 --> 00:05:25.395
+For example, the first row
+
+122
+00:05:25.395 --> 00:05:28.325
+of the table is a
+house with size,
+
+123
+00:05:28.325 --> 00:05:30.960
+2,104 square feet,
+
+124
+00:05:30.960 --> 00:05:34.250
+so that's around here,
+
+125
+00:05:34.250 --> 00:05:41.695
+and this house is sold for
+$400,000 which is around here.
+
+126
+00:05:41.695 --> 00:05:45.065
+This first row of
+the table is plotted
+
+127
+00:05:45.065 --> 00:05:48.935
+as this data point over here.
+
+128
+00:05:48.935 --> 00:05:50.370
+Now, let's look at
+
+129
+00:05:50.370 --> 00:05:53.440
+some notation for
+describing the data.
+
+130
+00:05:53.440 --> 00:05:55.435
+This is notation that you find
+
+131
+00:05:55.435 --> 00:05:58.405
+useful throughout your
+journey in machine learning.
+
+132
+00:05:58.405 --> 00:06:00.330
+As you increasingly get
+
+133
+00:06:00.330 --> 00:06:02.810
+familiar with machine
+learning terminology,
+
+134
+00:06:02.810 --> 00:06:04.860
+this would be
+terminology they can
+
+135
+00:06:04.860 --> 00:06:07.070
+use to talk about machine
+learning concepts
+
+136
+00:06:07.070 --> 00:06:09.500
+with others as well
+since a lot of
+
+137
+00:06:09.500 --> 00:06:12.490
+this is quite
+standard across AI,
+
+138
+00:06:12.490 --> 00:06:14.630
+you'll be seeing this notation
+
+139
+00:06:14.630 --> 00:06:16.625
+multiple times in
+this specialization,
+
+140
+00:06:16.625 --> 00:06:18.500
+so it's okay if you don't
+
+141
+00:06:18.500 --> 00:06:20.590
+remember everything
+for assign through,
+
+142
+00:06:20.590 --> 00:06:24.085
+it will naturally become
+more familiar overtime.
+
+143
+00:06:24.085 --> 00:06:28.020
+The dataset that you
+just saw and that is
+
+144
+00:06:28.020 --> 00:06:32.900
+used to train the model
+is called a training set.
+
+145
+00:06:32.900 --> 00:06:35.900
+Note that your client's
+house is not in
+
+146
+00:06:35.900 --> 00:06:38.435
+this dataset because
+it's not yet sold,
+
+147
+00:06:38.435 --> 00:06:41.015
+so no one knows
+what the price is.
+
+148
+00:06:41.015 --> 00:06:43.835
+To predict the price of
+your client's house,
+
+149
+00:06:43.835 --> 00:06:46.740
+you first train your
+model to learn from
+
+150
+00:06:46.740 --> 00:06:49.495
+the training set and
+that model can then
+
+151
+00:06:49.495 --> 00:06:53.005
+predict your client's
+houses price.
+
+152
+00:06:53.005 --> 00:06:56.670
+In Machine Learning, the
+standard notation to denote
+
+153
+00:06:56.670 --> 00:07:00.620
+the input here is lowercase x,
+
+154
+00:07:00.620 --> 00:07:03.265
+and we call this
+the input variable,
+
+155
+00:07:03.265 --> 00:07:09.005
+is also called a feature
+or an input feature.
+
+156
+00:07:09.005 --> 00:07:13.240
+For example, for the first
+house in your training set,
+
+157
+00:07:13.240 --> 00:07:15.205
+x is the size of the house,
+
+158
+00:07:15.205 --> 00:07:19.295
+so x equals 2,104.
+
+159
+00:07:19.295 --> 00:07:22.480
+The standard notation to denote
+
+160
+00:07:22.480 --> 00:07:26.495
+the output variable which
+you're trying to predict,
+
+161
+00:07:26.495 --> 00:07:29.595
+which is also sometimes
+called the target
+
+162
+00:07:29.595 --> 00:07:34.660
+variable, is lowercase y.
+
+163
+00:07:34.850 --> 00:07:39.380
+Here, y is the
+price of the house,
+
+164
+00:07:39.380 --> 00:07:41.720
+and for the first
+training example,
+
+165
+00:07:41.720 --> 00:07:44.175
+this is equal to 400,
+
+166
+00:07:44.175 --> 00:07:48.130
+so y equals 400.
+
+167
+00:07:48.130 --> 00:07:50.810
+The dataset has one row for
+
+168
+00:07:50.810 --> 00:07:54.370
+each house and in
+this training set,
+
+169
+00:07:54.370 --> 00:07:58.405
+there are 47 rows with
+
+170
+00:07:58.405 --> 00:08:03.355
+each row representing a
+different training example.
+
+171
+00:08:03.355 --> 00:08:06.410
+We're going to use
+lowercase m to
+
+172
+00:08:06.410 --> 00:08:09.355
+refer it to the total number
+of training examples,
+
+173
+00:08:09.355 --> 00:08:13.440
+and so here m is equal to 47.
+
+174
+00:08:13.440 --> 00:08:16.559
+To indicate the single
+training example,
+
+175
+00:08:16.559 --> 00:08:22.075
+we're going to use the
+notation parentheses x, y.
+
+176
+00:08:22.075 --> 00:08:26.425
+For the first training
+example, (x, y),
+
+177
+00:08:26.425 --> 00:08:32.910
+this pair of numbers
+is (2104, 400).
+
+178
+00:08:33.110 --> 00:08:37.290
+Now we have a lot of
+different training examples.
+
+179
+00:08:37.290 --> 00:08:39.345
+We have 47 of them in fact.
+
+180
+00:08:39.345 --> 00:08:42.775
+To refer to a specific
+training example,
+
+181
+00:08:42.775 --> 00:08:44.215
+this will correspond to
+
+182
+00:08:44.215 --> 00:08:47.345
+a specific row in this
+table on the left,
+
+183
+00:08:47.345 --> 00:08:49.460
+I'm going to use the notation
+
+184
+00:08:49.460 --> 00:08:52.085
+x superscript in parenthesis,
+
+185
+00:08:52.085 --> 00:08:57.280
+i, y superscript
+in parentheses i.
+
+186
+00:08:57.280 --> 00:09:00.020
+The superscript tells us that
+
+187
+00:09:00.020 --> 00:09:02.860
+this is the ith
+training example,
+
+188
+00:09:02.860 --> 00:09:05.455
+such as the first,
+
+189
+00:09:05.455 --> 00:09:08.915
+second, or third up to the
+47th training example.
+
+190
+00:09:08.915 --> 00:09:15.525
+I here, refers to a
+specific row in the table.
+
+191
+00:09:15.525 --> 00:09:20.855
+For instance, here is
+the first example,
+
+192
+00:09:20.855 --> 00:09:25.330
+when i equals 1 in
+the training set,
+
+193
+00:09:25.330 --> 00:09:29.340
+and so x superscript 1 is
+
+194
+00:09:29.340 --> 00:09:33.235
+equal to 2,104 and y superscript
+
+195
+00:09:33.235 --> 00:09:34.735
+1 is equal to
+
+196
+00:09:34.735 --> 00:09:41.425
+400 and let's add this
+superscript 1 here as well.
+
+197
+00:09:41.425 --> 00:09:44.910
+Just to note, this superscript i
+
+198
+00:09:44.910 --> 00:09:48.010
+in parentheses is
+not exponentiation.
+
+199
+00:09:48.010 --> 00:09:50.125
+When I write this,
+
+200
+00:09:50.125 --> 00:09:52.930
+this is not x squared.
+
+201
+00:09:52.930 --> 00:09:55.620
+This is not x to the power 2.
+
+202
+00:09:55.620 --> 00:09:59.270
+It just refers to the
+second training example.
+
+203
+00:09:59.270 --> 00:10:01.920
+This i, is just an index into
+
+204
+00:10:01.920 --> 00:10:06.205
+the training set and refers
+to row i in the table.
+
+205
+00:10:06.205 --> 00:10:09.740
+In this video, you saw what
+a training set is like,
+
+206
+00:10:09.740 --> 00:10:11.520
+as well as a standard notation
+
+207
+00:10:11.520 --> 00:10:13.345
+for describing
+this training set.
+
+208
+00:10:13.345 --> 00:10:14.630
+In the next video,
+
+209
+00:10:14.630 --> 00:10:16.450
+let's look at what
+rotate to take
+
+210
+00:10:16.450 --> 00:10:18.995
+this training set that
+you just saw and feed it
+
+211
+00:10:18.995 --> 00:10:21.040
+to learning algorithm so that
+
+212
+00:10:21.040 --> 00:10:23.665
+the algorithm can
+learn from this data.
+
+213
+00:10:23.665 --> 00:10:26.450
+Let's see that in
+the next video.
