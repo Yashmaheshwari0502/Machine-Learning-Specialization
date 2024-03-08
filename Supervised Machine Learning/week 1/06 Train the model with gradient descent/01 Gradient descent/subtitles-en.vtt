@@ -1,0 +1,811 @@
+WEBVTT
+
+1
+00:00:00.380 --> 00:00:03.540
+Welcome back. In the last video,
+
+2
+00:00:03.540 --> 00:00:05.250
+we saw visualizations of
+
+3
+00:00:05.250 --> 00:00:08.220
+the cost function j
+and how you can try
+
+4
+00:00:08.220 --> 00:00:10.500
+different choices of
+the parameters w and
+
+5
+00:00:10.500 --> 00:00:13.725
+b and see what cost
+value they get you.
+
+6
+00:00:13.725 --> 00:00:15.270
+It would be nice if we had
+
+7
+00:00:15.270 --> 00:00:19.225
+a more systematic way to
+find the values of w and b,
+
+8
+00:00:19.225 --> 00:00:21.875
+that results in the
+smallest possible cost,
+
+9
+00:00:21.875 --> 00:00:23.890
+j of w, b.
+
+10
+00:00:23.890 --> 00:00:26.420
+It turns out there's
+an algorithm called
+
+11
+00:00:26.420 --> 00:00:29.470
+gradient descent that
+you can use to do that.
+
+12
+00:00:29.470 --> 00:00:31.010
+Gradient descent is used
+
+13
+00:00:31.010 --> 00:00:32.930
+all over the place
+in machine learning,
+
+14
+00:00:32.930 --> 00:00:34.745
+not just for linear regression,
+
+15
+00:00:34.745 --> 00:00:37.400
+but for training
+for example some of
+
+16
+00:00:37.400 --> 00:00:40.265
+the most advanced
+neural network models,
+
+17
+00:00:40.265 --> 00:00:42.940
+also called deep
+learning models.
+
+18
+00:00:42.940 --> 00:00:45.140
+Deep learning models
+are something you
+
+19
+00:00:45.140 --> 00:00:47.740
+learned about in
+the second course.
+
+20
+00:00:47.740 --> 00:00:51.350
+Learning these two of
+gradient descent will set you
+
+21
+00:00:51.350 --> 00:00:52.490
+up with one of the most
+
+22
+00:00:52.490 --> 00:00:55.085
+important building blocks
+in machine learning.
+
+23
+00:00:55.085 --> 00:00:56.750
+Here's an overview of what
+
+24
+00:00:56.750 --> 00:00:58.865
+we'll do with gradient descent.
+
+25
+00:00:58.865 --> 00:01:01.960
+You have the cost
+function j of w,
+
+26
+00:01:01.960 --> 00:01:05.070
+b right here that you
+want to minimize.
+
+27
+00:01:05.070 --> 00:01:07.965
+In the example
+we've seen so far,
+
+28
+00:01:07.965 --> 00:01:11.190
+this is a cost function
+for linear regression,
+
+29
+00:01:11.190 --> 00:01:13.285
+but it turns out that
+gradient descent
+
+30
+00:01:13.285 --> 00:01:14.350
+is an algorithm that you
+
+31
+00:01:14.350 --> 00:01:17.650
+can use to try to
+minimize any function,
+
+32
+00:01:17.650 --> 00:01:21.815
+not just a cost function
+for linear regression.
+
+33
+00:01:21.815 --> 00:01:24.070
+Just to make this discussion on
+
+34
+00:01:24.070 --> 00:01:26.019
+gradient descent more general,
+
+35
+00:01:26.019 --> 00:01:28.030
+it turns out that
+gradient descent
+
+36
+00:01:28.030 --> 00:01:30.340
+applies to more
+general functions,
+
+37
+00:01:30.340 --> 00:01:33.220
+including other cost
+functions that work
+
+38
+00:01:33.220 --> 00:01:37.070
+with models that have
+more than two parameters.
+
+39
+00:01:37.070 --> 00:01:40.570
+For instance, if you
+have a cost function
+
+40
+00:01:40.570 --> 00:01:43.420
+J as a function of w_1,
+
+41
+00:01:43.420 --> 00:01:47.330
+w_2 up to w_n and b,
+
+42
+00:01:47.330 --> 00:01:50.780
+your objective is to minimize j
+
+43
+00:01:50.780 --> 00:01:55.175
+over the parameters
+w_1 to w_n and b.
+
+44
+00:01:55.175 --> 00:01:58.130
+In other words, you
+want to pick values
+
+45
+00:01:58.130 --> 00:02:02.315
+for w_1 through w_n and b,
+
+46
+00:02:02.315 --> 00:02:05.930
+that gives you the smallest
+possible value of j.
+
+47
+00:02:05.930 --> 00:02:08.300
+It turns out that
+gradient descent
+
+48
+00:02:08.300 --> 00:02:09.890
+is an algorithm
+that you can apply
+
+49
+00:02:09.890 --> 00:02:14.470
+to try to minimize this
+cost function j as well.
+
+50
+00:02:14.470 --> 00:02:17.810
+What you're going to do
+is just to start off
+
+51
+00:02:17.810 --> 00:02:21.535
+with some initial
+guesses for w and b.
+
+52
+00:02:21.535 --> 00:02:24.140
+In linear regression,
+it won't matter too
+
+53
+00:02:24.140 --> 00:02:26.510
+much what the initial value are,
+
+54
+00:02:26.510 --> 00:02:30.310
+so a common choice is
+to set them both to 0.
+
+55
+00:02:30.310 --> 00:02:33.020
+For example, you can set w to 0
+
+56
+00:02:33.020 --> 00:02:35.645
+and b to 0 as the initial guess.
+
+57
+00:02:35.645 --> 00:02:37.760
+With the gradient
+descent algorithm,
+
+58
+00:02:37.760 --> 00:02:39.430
+what you're going to do is,
+
+59
+00:02:39.430 --> 00:02:43.370
+you'll keep on changing the
+parameters w and b a bit
+
+60
+00:02:43.370 --> 00:02:47.390
+every time to try to
+reduce the cost j of w,
+
+61
+00:02:47.390 --> 00:02:52.720
+b until hopefully j settles
+at or near a minimum.
+
+62
+00:02:52.720 --> 00:02:56.090
+One thing I should note is
+that for some functions
+
+63
+00:02:56.090 --> 00:02:59.945
+j that may not be a bow
+shape or a hammock shape,
+
+64
+00:02:59.945 --> 00:03:01.850
+it is possible for there to be
+
+65
+00:03:01.850 --> 00:03:05.070
+more than one possible minimum.
+
+66
+00:03:05.200 --> 00:03:08.150
+Let's take a look
+at an example of
+
+67
+00:03:08.150 --> 00:03:10.595
+a more complex surface plot j
+
+68
+00:03:10.595 --> 00:03:13.265
+to see what gradient is doing.
+
+69
+00:03:13.265 --> 00:03:17.060
+This function is not a
+squared error cost function.
+
+70
+00:03:17.060 --> 00:03:18.770
+For linear regression with
+
+71
+00:03:18.770 --> 00:03:20.645
+the squared error cost function,
+
+72
+00:03:20.645 --> 00:03:24.655
+you always end up with a bow
+shape or a hammock shape.
+
+73
+00:03:24.655 --> 00:03:27.650
+But this is a type
+of cost function you
+
+74
+00:03:27.650 --> 00:03:30.860
+might get if you're training
+a neural network model.
+
+75
+00:03:30.860 --> 00:03:38.420
+Notice the axes, that is w
+and b on the bottom axis.
+
+76
+00:03:38.420 --> 00:03:41.090
+For different values of w and b,
+
+77
+00:03:41.090 --> 00:03:43.940
+you get different
+points on this surface,
+
+78
+00:03:43.940 --> 00:03:46.265
+j of w, b,
+
+79
+00:03:46.265 --> 00:03:47.990
+where the height
+of the surface at
+
+80
+00:03:47.990 --> 00:03:51.395
+some point is the value
+of the cost function.
+
+81
+00:03:51.395 --> 00:03:53.480
+Now, let's imagine that
+
+82
+00:03:53.480 --> 00:03:56.360
+this surface plot is
+actually a view of
+
+83
+00:03:56.360 --> 00:03:59.300
+a slightly hilly outdoor park or
+
+84
+00:03:59.300 --> 00:04:01.400
+a golf course where
+the high points are
+
+85
+00:04:01.400 --> 00:04:04.765
+hills and the low points
+are valleys like so.
+
+86
+00:04:04.765 --> 00:04:07.880
+I'd like you to
+imagine if you will,
+
+87
+00:04:07.880 --> 00:04:09.800
+that you are physically standing
+
+88
+00:04:09.800 --> 00:04:12.220
+at this point on the hill.
+
+89
+00:04:12.220 --> 00:04:14.255
+If it helps you to relax,
+
+90
+00:04:14.255 --> 00:04:16.005
+imagine that there's lots of
+
+91
+00:04:16.005 --> 00:04:17.780
+really nice green grass and
+
+92
+00:04:17.780 --> 00:04:21.080
+butterflies and flowers
+is a really nice hill.
+
+93
+00:04:21.080 --> 00:04:25.790
+Your goal is to start
+up here and get
+
+94
+00:04:25.790 --> 00:04:27.200
+to the bottom of one of
+
+95
+00:04:27.200 --> 00:04:31.170
+these valleys as
+efficiently as possible.
+
+96
+00:04:31.250 --> 00:04:34.660
+What the gradient descent
+algorithm does is,
+
+97
+00:04:34.660 --> 00:04:38.330
+you're going to spin
+around 360 degrees
+
+98
+00:04:38.330 --> 00:04:40.505
+and look around
+and ask yourself,
+
+99
+00:04:40.505 --> 00:04:42.110
+if I were to take
+
+100
+00:04:42.110 --> 00:04:44.945
+a tiny little baby
+step in one direction,
+
+101
+00:04:44.945 --> 00:04:47.360
+and I want to go
+downhill as quickly
+
+102
+00:04:47.360 --> 00:04:49.990
+as possible to or one
+of these valleys.
+
+103
+00:04:49.990 --> 00:04:53.960
+What direction do I choose
+to take that baby step?
+
+104
+00:04:53.960 --> 00:04:55.760
+Well, if you want to walk down
+
+105
+00:04:55.760 --> 00:04:58.070
+this hill as efficiently
+as possible,
+
+106
+00:04:58.070 --> 00:05:00.200
+it turns out that
+if you're standing
+
+107
+00:05:00.200 --> 00:05:02.570
+at this point in the hill
+and you look around,
+
+108
+00:05:02.570 --> 00:05:05.150
+you will notice that the
+best direction to take
+
+109
+00:05:05.150 --> 00:05:08.615
+your next step downhill is
+roughly that direction.
+
+110
+00:05:08.615 --> 00:05:10.400
+Mathematically, this is
+
+111
+00:05:10.400 --> 00:05:13.090
+the direction of
+steepest descent.
+
+112
+00:05:13.090 --> 00:05:16.355
+It means that when you take
+a tiny baby little step,
+
+113
+00:05:16.355 --> 00:05:18.830
+this takes you
+downhill faster than
+
+114
+00:05:18.830 --> 00:05:20.450
+a tiny little baby
+step you could
+
+115
+00:05:20.450 --> 00:05:22.930
+have taken in any
+other direction.
+
+116
+00:05:22.930 --> 00:05:25.605
+After taking this first step,
+
+117
+00:05:25.605 --> 00:05:29.205
+you're now at this point
+on the hill over here.
+
+118
+00:05:29.205 --> 00:05:31.440
+Now let's repeat the process.
+
+119
+00:05:31.440 --> 00:05:33.425
+Standing at this new point,
+
+120
+00:05:33.425 --> 00:05:35.300
+you're going to again spin
+
+121
+00:05:35.300 --> 00:05:38.345
+around 360 degrees
+and ask yourself,
+
+122
+00:05:38.345 --> 00:05:40.040
+in what direction will I take
+
+123
+00:05:40.040 --> 00:05:44.305
+the next little baby step
+in order to move downhill?
+
+124
+00:05:44.305 --> 00:05:46.970
+If you do that and
+take another step,
+
+125
+00:05:46.970 --> 00:05:48.845
+you end up moving a bit in
+
+126
+00:05:48.845 --> 00:05:52.460
+that direction and
+you can keep going.
+
+127
+00:05:52.460 --> 00:05:54.140
+From this new point,
+
+128
+00:05:54.140 --> 00:05:56.210
+you can again look
+around and decide
+
+129
+00:05:56.210 --> 00:05:59.170
+what direction would take
+you downhill most quickly.
+
+130
+00:05:59.170 --> 00:06:02.885
+Take another step,
+another step, and so on,
+
+131
+00:06:02.885 --> 00:06:06.095
+until you find yourself at
+the bottom of this valley,
+
+132
+00:06:06.095 --> 00:06:09.005
+at this local
+minimum, right here.
+
+133
+00:06:09.005 --> 00:06:10.910
+What you just did was go through
+
+134
+00:06:10.910 --> 00:06:13.540
+multiple steps of
+gradient descent.
+
+135
+00:06:13.540 --> 00:06:15.845
+It turns out, gradient descent
+
+136
+00:06:15.845 --> 00:06:18.020
+has an interesting property.
+
+137
+00:06:18.020 --> 00:06:22.280
+Remember that you can
+choose a starting point at
+
+138
+00:06:22.280 --> 00:06:23.660
+the surface by choosing
+
+139
+00:06:23.660 --> 00:06:26.860
+starting values for the
+parameters w and b.
+
+140
+00:06:26.860 --> 00:06:29.885
+When you perform gradient
+descent a moment ago,
+
+141
+00:06:29.885 --> 00:06:33.610
+you had started at
+this point over here.
+
+142
+00:06:33.610 --> 00:06:37.730
+Now, imagine if you try
+gradient descent again,
+
+143
+00:06:37.730 --> 00:06:39.350
+but this time you choose
+
+144
+00:06:39.350 --> 00:06:41.720
+a different starting
+point by choosing
+
+145
+00:06:41.720 --> 00:06:43.850
+parameters that place
+your starting point
+
+146
+00:06:43.850 --> 00:06:47.300
+just a couple of steps
+to the right over here.
+
+147
+00:06:47.300 --> 00:06:50.764
+If you then repeat the
+gradient descent process,
+
+148
+00:06:50.764 --> 00:06:52.310
+which means you look around,
+
+149
+00:06:52.310 --> 00:06:53.750
+take a little step
+in the direction of
+
+150
+00:06:53.750 --> 00:06:57.035
+steepest ascent so
+you end up here.
+
+151
+00:06:57.035 --> 00:06:58.775
+Then you again look around,
+
+152
+00:06:58.775 --> 00:07:01.120
+take another step, and so on.
+
+153
+00:07:01.120 --> 00:07:05.390
+If you were to run gradient
+descent this second time,
+
+154
+00:07:05.390 --> 00:07:07.400
+starting just a couple steps in
+
+155
+00:07:07.400 --> 00:07:09.740
+the right of where we
+did it the first time,
+
+156
+00:07:09.740 --> 00:07:13.420
+then you end up in a
+totally different valley.
+
+157
+00:07:13.420 --> 00:07:17.530
+This different minimum
+over here on the right.
+
+158
+00:07:17.530 --> 00:07:20.330
+The bottoms of
+both the first and
+
+159
+00:07:20.330 --> 00:07:23.735
+the second valleys are
+called local minima.
+
+160
+00:07:23.735 --> 00:07:27.035
+Because if you start going
+down the first valley,
+
+161
+00:07:27.035 --> 00:07:30.340
+gradient descent won't lead
+you to the second valley,
+
+162
+00:07:30.340 --> 00:07:32.300
+and the same is true if you
+
+163
+00:07:32.300 --> 00:07:34.685
+started going down
+the second valley,
+
+164
+00:07:34.685 --> 00:07:37.340
+you stay in that
+second minimum and
+
+165
+00:07:37.340 --> 00:07:40.975
+not find your way into
+the first local minimum.
+
+166
+00:07:40.975 --> 00:07:43.430
+This is an interesting property
+
+167
+00:07:43.430 --> 00:07:45.125
+of the gradient
+descent algorithm,
+
+168
+00:07:45.125 --> 00:07:47.720
+and you see more
+about this later.
+
+169
+00:07:47.720 --> 00:07:50.285
+In this video, you saw how
+
+170
+00:07:50.285 --> 00:07:53.155
+gradient descent helps
+you go downhill.
+
+171
+00:07:53.155 --> 00:07:54.680
+In the next video,
+
+172
+00:07:54.680 --> 00:07:57.500
+let's look at the mathematical
+expressions that you
+
+173
+00:07:57.500 --> 00:08:00.725
+can implement to make
+gradient descent work.
+
+174
+00:08:00.725 --> 00:08:03.390
+Let's go on to the next video.

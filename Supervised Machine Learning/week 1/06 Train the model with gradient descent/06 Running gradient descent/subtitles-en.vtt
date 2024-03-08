@@ -1,0 +1,395 @@
+WEBVTT
+
+1
+00:00:02.040 --> 00:00:06.090
+Let's see what happens when you run
+gradient descent for linear regression.
+
+2
+00:00:06.090 --> 00:00:08.640
+Let's go see the algorithm in action.
+
+3
+00:00:08.640 --> 00:00:12.983
+Here's a plot of the model and
+data on the upper left and
+
+4
+00:00:12.983 --> 00:00:17.421
+a contour plot of the cost
+function on the upper right and
+
+5
+00:00:17.421 --> 00:00:23.140
+at the bottom is the surface
+plot of the same cost function.
+
+6
+00:00:23.140 --> 00:00:28.281
+Often w and
+b will both be initialized to 0, but for
+
+7
+00:00:28.281 --> 00:00:35.740
+this demonstration,
+lets initialized w = -0.1 and b = 900.
+
+8
+00:00:35.740 --> 00:00:43.361
+So this corresponds to f(x) = -0.1x + 900.
+
+9
+00:00:44.540 --> 00:00:48.833
+Now, if we take one step
+using gradient descent,
+
+10
+00:00:48.833 --> 00:00:53.637
+we ended up going from this
+point of the cost function out
+
+11
+00:00:53.637 --> 00:00:57.624
+here to this point just down and
+to the right and
+
+12
+00:00:57.624 --> 00:01:02.451
+notice that the straight line
+fit is also changed a bit.
+
+13
+00:01:04.140 --> 00:01:05.161
+Let's take another step.
+
+14
+00:01:06.840 --> 00:01:10.601
+The cost function has now
+moved to this third and
+
+15
+00:01:10.601 --> 00:01:14.561
+again the function f(x)
+has also changed a bit.
+
+16
+00:01:15.740 --> 00:01:21.440
+As you take more of these steps,
+the cost is decreasing at each update.
+
+17
+00:01:21.440 --> 00:01:26.261
+So the parameters w and
+b are following this trajectory.
+
+18
+00:01:28.140 --> 00:01:33.344
+And if you look on the left,
+you get this corresponding straight line
+
+19
+00:01:33.344 --> 00:01:40.240
+fit that fits the data better and better
+until we've reached the global minimum.
+
+20
+00:01:40.240 --> 00:01:44.257
+The global minimum corresponds
+to this straight line fit,
+
+21
+00:01:44.257 --> 00:01:47.640
+which is a relatively
+good fit to the data.
+
+22
+00:01:47.640 --> 00:01:50.240
+I mean, isn't that cool.
+
+23
+00:01:50.240 --> 00:01:53.018
+And so that's gradient descent and
+
+24
+00:01:53.018 --> 00:01:58.240
+we're going to use this to fit
+a model to the holding data.
+
+25
+00:01:58.240 --> 00:02:02.564
+And you can now use this f(x)
+model to predict the price
+
+26
+00:02:02.564 --> 00:02:06.640
+of your clients house or
+anyone else's house.
+
+27
+00:02:06.640 --> 00:02:12.096
+For instance, if your friend's
+house size is 1250 square feet,
+
+28
+00:02:12.096 --> 00:02:17.363
+you can now read off the value and
+predict that maybe they could get,
+
+29
+00:02:17.363 --> 00:02:21.255
+I don't know, $250,000 for the house.
+
+30
+00:02:21.255 --> 00:02:27.179
+To be more precise, this gradient descent
+process is called batch gradient descent.
+
+31
+00:02:27.179 --> 00:02:31.885
+The term batch gradient descent refers
+to the fact that on every step of
+
+32
+00:02:31.885 --> 00:02:36.513
+gradient descent, we're looking
+at all of the training examples,
+
+33
+00:02:36.513 --> 00:02:39.651
+instead of just a subset
+of the training data.
+
+34
+00:02:41.140 --> 00:02:46.586
+So in computing grading descent,
+when computing derivatives,
+
+35
+00:02:46.586 --> 00:02:50.440
+when computing the sum from i =1 to m.
+
+36
+00:02:50.440 --> 00:02:55.160
+And bash gradient descent is
+looking at the entire batch of
+
+37
+00:02:55.160 --> 00:02:58.940
+training examples at each update.
+
+38
+00:02:58.940 --> 00:03:02.874
+I know that bash grading percent may
+not be the most intuitive name, but
+
+39
+00:03:02.874 --> 00:03:06.840
+this is what people in the machine
+learning community call it.
+
+40
+00:03:06.840 --> 00:03:09.774
+If you've heard of
+the newsletter The Batch,
+
+41
+00:03:09.774 --> 00:03:12.494
+that's published by DeepLearning.AI.
+
+42
+00:03:12.494 --> 00:03:17.051
+The newsletter The batch was also named
+for this concept in machine learning.
+
+43
+00:03:18.340 --> 00:03:22.912
+And then it turns out that there are other
+versions of gradient descent that do not
+
+44
+00:03:22.912 --> 00:03:24.997
+look at the entire training set, but
+
+45
+00:03:24.997 --> 00:03:29.840
+instead looks at smaller subsets of
+the training data at each update step.
+
+46
+00:03:29.840 --> 00:03:33.351
+But we'll use batch gradient descent for
+linear regression.
+
+47
+00:03:34.440 --> 00:03:36.590
+So that's it for linear regression.
+
+48
+00:03:36.590 --> 00:03:40.470
+Congratulations on getting through
+your first machine learning model.
+
+49
+00:03:40.470 --> 00:03:45.555
+I hope you go and celebrate or I don't
+know maybe take a nap in your hammock.
+
+50
+00:03:45.555 --> 00:03:48.680
+In the optional lab that
+follows this video.
+
+51
+00:03:48.680 --> 00:03:53.165
+You'll see a review of the gradient
+descent algorithm as was how to implement
+
+52
+00:03:53.165 --> 00:03:54.440
+it in code.
+
+53
+00:03:54.440 --> 00:03:58.950
+You'll also see a plot that shows how
+the cost decreases as you continue
+
+54
+00:03:58.950 --> 00:04:01.340
+training more iterations.
+
+55
+00:04:01.340 --> 00:04:03.804
+And you'll also see a contour plot,
+
+56
+00:04:03.804 --> 00:04:08.096
+seeing how the cost gets closer
+to the global minimum as gradient
+
+57
+00:04:08.096 --> 00:04:13.240
+descent finds better and
+better values for the parameters w and b.
+
+58
+00:04:13.240 --> 00:04:16.440
+So remember that to do the optional lab.
+
+59
+00:04:16.440 --> 00:04:19.300
+You just need to read and run this code.
+
+60
+00:04:19.300 --> 00:04:22.165
+You will need to write
+any code yourself and
+
+61
+00:04:22.165 --> 00:04:24.810
+I hope you take a few moments to do that.
+
+62
+00:04:24.810 --> 00:04:29.894
+And also become familiar with the gradient
+descent code because this will
+
+63
+00:04:29.894 --> 00:04:35.061
+help you to implement this and
+similar algorithms in the future yourself.
+
+64
+00:04:36.440 --> 00:04:39.734
+Thanks for sticking with me through
+the end of this last video for
+
+65
+00:04:39.734 --> 00:04:43.540
+the first week and congratulations for
+making it all the way here.
+
+66
+00:04:43.540 --> 00:04:47.112
+You're on your way to becoming
+a machine learning person.
+
+67
+00:04:47.112 --> 00:04:50.930
+In addition to the optional labs,
+if you haven't done so yet.
+
+68
+00:04:50.930 --> 00:04:54.690
+I hope you also check out the practice
+quizzes, which are a nice way that
+
+69
+00:04:54.690 --> 00:04:58.540
+you can double check your own
+understanding of the concepts.
+
+70
+00:04:58.540 --> 00:05:02.340
+It's also totally fine, if you don't
+get them all right the first time.
+
+71
+00:05:02.340 --> 00:05:06.457
+And you can also take the quizzes multiple
+times until you get the score that
+
+72
+00:05:06.457 --> 00:05:07.940
+you want.
+
+73
+00:05:07.940 --> 00:05:12.353
+You now know how to implement linear
+regression with one variable and
+
+74
+00:05:12.353 --> 00:05:15.840
+that brings us to the close of this week.
+
+75
+00:05:15.840 --> 00:05:20.603
+Next week, we'll learn to make linear
+regression much more powerful instead of
+
+76
+00:05:20.603 --> 00:05:22.564
+one feature like size of a house,
+
+77
+00:05:22.564 --> 00:05:26.040
+you learn how to get it to
+work with lots of features.
+
+78
+00:05:26.040 --> 00:05:29.940
+You'll also learn how to get
+it to fit nonlinear curves.
+
+79
+00:05:29.940 --> 00:05:34.740
+These improvements will make the algorithm
+much more useful and valuable.
+
+80
+00:05:34.740 --> 00:05:38.968
+Lastly, we'll also go over some
+practical tips that will really hope for
+
+81
+00:05:38.968 --> 00:05:43.140
+getting linear regression to
+work on practical applications.
+
+82
+00:05:43.140 --> 00:05:45.572
+I'm really happy to have you
+here with me in this class and
+
+83
+00:05:45.572 --> 00:05:47.251
+I look forward to seeing you next week.

@@ -1,0 +1,615 @@
+WEBVTT
+
+1
+00:00:01.210 --> 00:00:05.201
+The choice of the learning rate,
+alpha will have a huge impact
+
+2
+00:00:05.201 --> 00:00:09.359
+on the efficiency of your
+implementation of gradient descent.
+
+3
+00:00:09.359 --> 00:00:10.361
+And if alpha,
+
+4
+00:00:10.361 --> 00:00:15.632
+the learning rate is chosen poorly rate
+of descent may not even work at all.
+
+5
+00:00:15.632 --> 00:00:19.449
+In this video, let's take a deeper
+look at the learning rate.
+
+6
+00:00:19.449 --> 00:00:23.151
+This will also help you choose
+better learning rates for
+
+7
+00:00:23.151 --> 00:00:26.153
+your implementations of gradient descent.
+
+8
+00:00:26.153 --> 00:00:29.547
+So here again,
+is the gradient descent rule.
+
+9
+00:00:29.547 --> 00:00:35.699
+W is updated to be W minus the learning
+rate, alpha times the derivative term.
+
+10
+00:00:35.699 --> 00:00:38.637
+To learn more about what
+the learning rate alpha is doing.
+
+11
+00:00:38.637 --> 00:00:44.599
+Let's see what could happen if the
+learning rate alpha is either too small or
+
+12
+00:00:44.599 --> 00:00:46.100
+if it is too large.
+
+13
+00:00:46.100 --> 00:00:49.053
+For the case where the learning
+rate is too small.
+
+14
+00:00:49.053 --> 00:00:56.149
+Here's a graph where the horizontal axis
+is W and the vertical axis is the cost J.
+
+15
+00:00:56.149 --> 00:01:01.328
+And here's the graph of
+the function J of W.
+
+16
+00:01:01.328 --> 00:01:07.717
+Let's start grading descent at this point
+here, if the learning rate is too small.
+
+17
+00:01:07.717 --> 00:01:13.255
+Then what happens is that you multiply
+your derivative term by some really,
+
+18
+00:01:13.255 --> 00:01:14.910
+really small number.
+
+19
+00:01:14.910 --> 00:01:18.045
+So you're going to be
+multiplying by number alpha.
+
+20
+00:01:18.045 --> 00:01:23.103
+That's really small, like 0.0000001.
+
+21
+00:01:23.103 --> 00:01:28.172
+And so you end up taking a very
+small baby step like that.
+
+22
+00:01:28.172 --> 00:01:33.906
+Then from this point you're going to
+take another tiny tiny little baby step.
+
+23
+00:01:33.906 --> 00:01:40.261
+But because the learning rate is so small,
+the second step is also just minuscule.
+
+24
+00:01:40.261 --> 00:01:45.507
+The outcome of this process is that you
+do end up decreasing the cost J but
+
+25
+00:01:45.507 --> 00:01:47.087
+incredibly slowly.
+
+26
+00:01:47.087 --> 00:01:50.262
+So, here's another step and another step,
+
+27
+00:01:50.262 --> 00:01:54.452
+another tiny step until you
+finally approach the minimum.
+
+28
+00:01:54.452 --> 00:01:59.204
+But as you may notice you're going to need
+a lot of steps to get to the minimum.
+
+29
+00:01:59.204 --> 00:02:03.206
+So to summarize if the learning
+rate is too small,
+
+30
+00:02:03.206 --> 00:02:07.700
+then gradient descents will work,
+but it will be slow.
+
+31
+00:02:07.700 --> 00:02:12.828
+It will take a very long time because it's
+going to take these tiny tiny baby steps.
+
+32
+00:02:12.828 --> 00:02:15.406
+And it's going to need
+a lot of steps before it
+
+33
+00:02:15.406 --> 00:02:17.637
+gets anywhere close to the minimum.
+
+34
+00:02:17.637 --> 00:02:20.694
+Now, let's look at a different case.
+
+35
+00:02:20.694 --> 00:02:24.091
+What happens if the learning
+rate is too large?
+
+36
+00:02:24.091 --> 00:02:26.552
+Here's another graph of the cost function.
+
+37
+00:02:26.552 --> 00:02:32.015
+And let's say we start grating
+descent with W at this value here.
+
+38
+00:02:32.015 --> 00:02:37.177
+So it's actually already
+pretty close to the minimum.
+
+39
+00:02:37.177 --> 00:02:40.234
+So the decorative points to the right.
+
+40
+00:02:40.234 --> 00:02:45.473
+But if the learning rate
+is too large then you
+
+41
+00:02:45.473 --> 00:02:51.570
+update W very giant step to
+be all the way over here.
+
+42
+00:02:51.570 --> 00:02:56.303
+And that's this point
+here on the function J.
+
+43
+00:02:56.303 --> 00:03:01.799
+So you move from this point on the left,
+all the way to this point on the right.
+
+44
+00:03:01.799 --> 00:03:04.498
+And now the cost has
+actually gotten worse.
+
+45
+00:03:04.498 --> 00:03:09.073
+It has increased because it
+started out at this value here and
+
+46
+00:03:09.073 --> 00:03:13.569
+after one step,
+it actually increased to this value here.
+
+47
+00:03:13.569 --> 00:03:18.966
+Now the derivative at this new
+point says to decrease W but
+
+48
+00:03:18.966 --> 00:03:22.234
+when the learning rate is too big.
+
+49
+00:03:22.234 --> 00:03:27.626
+Then you may take a huge step going
+from here all the way out here.
+
+50
+00:03:27.626 --> 00:03:30.711
+So now you've gotten to
+this point here and again,
+
+51
+00:03:30.711 --> 00:03:32.656
+if the learning rate is too big.
+
+52
+00:03:32.656 --> 00:03:36.544
+Then you take another huge
+step with an acceleration and
+
+53
+00:03:36.544 --> 00:03:38.945
+way overshoot the minimum again.
+
+54
+00:03:38.945 --> 00:03:44.048
+So now you're at this point on the right
+and one more time you do another update.
+
+55
+00:03:44.048 --> 00:03:51.161
+And end up all the way here and
+so you're now at this point here.
+
+56
+00:03:51.161 --> 00:03:54.847
+So as you may notice you're
+actually getting further and
+
+57
+00:03:54.847 --> 00:03:56.930
+further away from the minimum.
+
+58
+00:03:56.930 --> 00:03:59.906
+So if the learning rate is too large,
+
+59
+00:03:59.906 --> 00:04:05.672
+then creating the sense may overshoot and
+may never reach the minimum.
+
+60
+00:04:05.672 --> 00:04:10.467
+And another way to say that
+is that great intersect
+
+61
+00:04:10.467 --> 00:04:14.587
+may fail to converge and may even diverge.
+
+62
+00:04:14.587 --> 00:04:19.521
+So, here's another question,
+you may be wondering one of
+
+63
+00:04:19.521 --> 00:04:23.477
+your parameter W is already
+at this point here.
+
+64
+00:04:23.477 --> 00:04:29.280
+So that your cost J is
+already at a local minimum.
+
+65
+00:04:29.280 --> 00:04:30.566
+What do you think?
+
+66
+00:04:30.566 --> 00:04:35.895
+One step of gradient descent will do
+if you've already reached a minimum?
+
+67
+00:04:35.895 --> 00:04:38.722
+So this is a tricky one.
+
+68
+00:04:38.722 --> 00:04:40.867
+When I was first learning this stuff,
+
+69
+00:04:40.867 --> 00:04:43.557
+it actually took me a long
+time to figure it out.
+
+70
+00:04:43.557 --> 00:04:45.772
+But let's work through this together.
+
+71
+00:04:45.772 --> 00:04:49.849
+Let's suppose you have
+some cost function J.
+
+72
+00:04:49.849 --> 00:04:55.088
+And the one you see here isn't
+a square error cost function and
+
+73
+00:04:55.088 --> 00:04:59.926
+this cost function has two
+local minima corresponding to
+
+74
+00:04:59.926 --> 00:05:02.864
+the two valleys that you see here.
+
+75
+00:05:02.864 --> 00:05:08.915
+Now let's suppose that after some
+number of steps of gradient descent,
+
+76
+00:05:08.915 --> 00:05:13.095
+your parameter W is over here,
+say equal to five.
+
+77
+00:05:13.095 --> 00:05:16.562
+And so this is the current value of W.
+
+78
+00:05:16.562 --> 00:05:20.272
+This means that you're at this
+point on the cost function J.
+
+79
+00:05:20.272 --> 00:05:23.281
+And that happens to be a local minimum,
+
+80
+00:05:23.281 --> 00:05:28.034
+turns out if you draw attention
+to the function at this point.
+
+81
+00:05:28.034 --> 00:05:32.700
+The slope of this line is zero and
+thus the derivative term.
+
+82
+00:05:32.700 --> 00:05:37.168
+Here is equal to zero for
+the current value of W.
+
+83
+00:05:37.168 --> 00:05:42.166
+And so you're grading descent
+update becomes W is updated
+
+84
+00:05:42.166 --> 00:05:45.641
+to W minus the learning rate times zero.
+
+85
+00:05:45.641 --> 00:05:50.701
+We're here that's because
+the derivative term is equal to zero.
+
+86
+00:05:50.701 --> 00:05:56.746
+And this is the same as saying
+let's set W to be equal to W.
+
+87
+00:05:56.746 --> 00:06:01.188
+So this means that if you're
+already at a local minimum,
+
+88
+00:06:01.188 --> 00:06:04.254
+gradient descent leaves W unchanged.
+
+89
+00:06:04.254 --> 00:06:10.553
+Because it just updates the new value of
+W to be the exact same old value of W.
+
+90
+00:06:10.553 --> 00:06:15.421
+So concretely, let's say if
+the current value of W is five.
+
+91
+00:06:15.421 --> 00:06:20.479
+And alpha is 0.1 after one iteration,
+
+92
+00:06:20.479 --> 00:06:25.536
+you update W as W minus
+alpha times zero and
+
+93
+00:06:25.536 --> 00:06:28.727
+it is still equal to five.
+
+94
+00:06:28.727 --> 00:06:33.263
+So if your parameters have already
+brought you to a local minimum,
+
+95
+00:06:33.263 --> 00:06:37.480
+then further gradient descent
+steps to absolutely nothing.
+
+96
+00:06:37.480 --> 00:06:41.765
+It doesn't change the parameters which
+is what you want because it keeps
+
+97
+00:06:41.765 --> 00:06:43.953
+the solution at that local minimum.
+
+98
+00:06:43.953 --> 00:06:48.729
+This also explains why gradient
+descent can reach a local minimum,
+
+99
+00:06:48.729 --> 00:06:51.508
+even with a fixed learning rate alpha.
+
+100
+00:06:51.508 --> 00:06:57.092
+Here's what I mean, to illustrate this,
+let's look at another example.
+
+101
+00:06:57.092 --> 00:07:02.195
+Here's the cost function J of
+W that we want to minimize.
+
+102
+00:07:02.195 --> 00:07:07.161
+Let's initialize gradient
+descent up here at this point.
+
+103
+00:07:07.161 --> 00:07:13.762
+If we take one update step,
+maybe it will take us to that point.
+
+104
+00:07:13.762 --> 00:07:18.008
+And because this derivative
+is pretty large, grading,
+
+105
+00:07:18.008 --> 00:07:21.289
+descent takes a relatively big step right.
+
+106
+00:07:21.289 --> 00:07:26.467
+Now, we're at this second point
+where we take another step.
+
+107
+00:07:26.467 --> 00:07:31.119
+And you may notice that the slope is not
+as steep as it was at the first point.
+
+108
+00:07:31.119 --> 00:07:33.885
+So the derivative isn't as large.
+
+109
+00:07:33.885 --> 00:07:39.903
+And so the next update step will
+not be as large as that first step.
+
+110
+00:07:39.903 --> 00:07:42.758
+Now, read this third point here and
+
+111
+00:07:42.758 --> 00:07:47.528
+the derivative is smaller than
+it was at the previous step.
+
+112
+00:07:47.528 --> 00:07:52.731
+And will take an even smaller
+step as we approach the minimum.
+
+113
+00:07:52.731 --> 00:07:56.484
+The decorative gets closer and
+closer to zero.
+
+114
+00:07:56.484 --> 00:08:01.393
+So as we run gradient descent,
+eventually we're taking very small
+
+115
+00:08:01.393 --> 00:08:04.850
+steps until you finally
+reach a local minimum.
+
+116
+00:08:04.850 --> 00:08:09.260
+So just to recap,
+as we get nearer a local minimum gradient
+
+117
+00:08:09.260 --> 00:08:13.045
+descent will automatically
+take smaller steps.
+
+118
+00:08:13.045 --> 00:08:16.577
+And that's because as we
+approach the local minimum,
+
+119
+00:08:16.577 --> 00:08:19.586
+the derivative automatically gets smaller.
+
+120
+00:08:19.586 --> 00:08:24.314
+And that means the update steps
+also automatically gets smaller.
+
+121
+00:08:24.314 --> 00:08:28.573
+Even if the learning rate alpha
+is kept at some fixed value.
+
+122
+00:08:28.573 --> 00:08:31.758
+So that's the gradient descent algorithm,
+
+123
+00:08:31.758 --> 00:08:35.460
+you can use it to try to
+minimize any cost function J.
+
+124
+00:08:35.460 --> 00:08:40.077
+Not just the mean squared error
+cost function that we're using for
+
+125
+00:08:40.077 --> 00:08:41.570
+the new regression.
+
+126
+00:08:41.570 --> 00:08:45.231
+In the next video,
+we're going to take the function J and
+
+127
+00:08:45.231 --> 00:08:50.099
+set that back to be exactly the linear
+regression models cost function.
+
+128
+00:08:50.099 --> 00:08:54.315
+The mean squared error cost function
+that we come up with earlier.
+
+129
+00:08:54.315 --> 00:08:58.991
+And putting together great in dissent with
+this cost function that will give you
+
+130
+00:08:58.991 --> 00:09:03.051
+your first learning algorithm,
+the linear regression algorithm.

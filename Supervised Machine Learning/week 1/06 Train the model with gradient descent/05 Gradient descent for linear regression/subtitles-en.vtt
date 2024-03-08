@@ -1,0 +1,587 @@
+WEBVTT
+
+1
+00:00:00.830 --> 00:00:03.810
+Previously, you took a look at
+
+2
+00:00:03.810 --> 00:00:07.440
+the linear regression model
+and then the cost function,
+
+3
+00:00:07.440 --> 00:00:10.095
+and then the gradient
+descent algorithm.
+
+4
+00:00:10.095 --> 00:00:13.590
+In this video, we're going
+to pull out together and use
+
+5
+00:00:13.590 --> 00:00:15.660
+the squared error
+cost function for
+
+6
+00:00:15.660 --> 00:00:19.000
+the linear regression model
+with gradient descent.
+
+7
+00:00:19.000 --> 00:00:20.970
+This will allow us to train
+
+8
+00:00:20.970 --> 00:00:23.310
+the linear regression
+model to fit
+
+9
+00:00:23.310 --> 00:00:24.360
+a straight line to achieve
+
+10
+00:00:24.360 --> 00:00:26.865
+the training data.
+Let's get to it.
+
+11
+00:00:26.865 --> 00:00:30.210
+Here's the linear
+regression model.
+
+12
+00:00:30.210 --> 00:00:34.675
+To the right is the squared
+error cost function.
+
+13
+00:00:34.675 --> 00:00:38.150
+Below is the gradient
+descent algorithm.
+
+14
+00:00:38.150 --> 00:00:42.040
+It turns out if you
+calculate these derivatives,
+
+15
+00:00:42.040 --> 00:00:45.215
+these are the terms
+you would get.
+
+16
+00:00:45.215 --> 00:00:51.285
+The derivative with respect
+to W is this 1 over m,
+
+17
+00:00:51.285 --> 00:00:55.295
+sum of i equals 1 through
+m. Then the error term,
+
+18
+00:00:55.295 --> 00:00:58.310
+that is the difference
+between the predicted and
+
+19
+00:00:58.310 --> 00:01:03.020
+the actual values times
+the input feature xi.
+
+20
+00:01:03.020 --> 00:01:05.650
+The derivative with respect to b
+
+21
+00:01:05.650 --> 00:01:08.435
+is this formula over here,
+
+22
+00:01:08.435 --> 00:01:10.775
+which looks the same
+as the equation above,
+
+23
+00:01:10.775 --> 00:01:15.550
+except that it doesn't have
+that xi term at the end.
+
+24
+00:01:15.550 --> 00:01:18.875
+If you use these
+formulas to compute
+
+25
+00:01:18.875 --> 00:01:20.735
+these two derivatives and
+
+26
+00:01:20.735 --> 00:01:24.170
+implements gradient descent
+this way, it will work.
+
+27
+00:01:24.170 --> 00:01:26.645
+Now, you may be wondering,
+
+28
+00:01:26.645 --> 00:01:28.550
+where did I get
+these formulas from?
+
+29
+00:01:28.550 --> 00:01:31.130
+They're derived using calculus.
+
+30
+00:01:31.130 --> 00:01:33.605
+If you want to see
+the full derivation,
+
+31
+00:01:33.605 --> 00:01:34.730
+I'll quickly run through
+
+32
+00:01:34.730 --> 00:01:36.715
+the derivation on
+the next slide.
+
+33
+00:01:36.715 --> 00:01:38.870
+But if you don't
+remember or aren't
+
+34
+00:01:38.870 --> 00:01:41.460
+interested in the calculus,
+don't worry about it.
+
+35
+00:01:41.460 --> 00:01:42.920
+You can skip the materials on
+
+36
+00:01:42.920 --> 00:01:45.410
+the next slide entirely
+and still be able
+
+37
+00:01:45.410 --> 00:01:47.290
+to implement gradient
+descent and finish
+
+38
+00:01:47.290 --> 00:01:50.215
+this class and everything
+will work just fine.
+
+39
+00:01:50.215 --> 00:01:52.520
+In this slide, which is one of
+
+40
+00:01:52.520 --> 00:01:55.550
+the most mathematical slide
+of the entire specialization,
+
+41
+00:01:55.550 --> 00:01:57.665
+and again is
+completely optional,
+
+42
+00:01:57.665 --> 00:02:01.475
+we'll show you how to calculate
+the derivative terms.
+
+43
+00:02:01.475 --> 00:02:03.795
+Let's start with the first term.
+
+44
+00:02:03.795 --> 00:02:06.800
+The derivative of the
+cost function J with
+
+45
+00:02:06.800 --> 00:02:10.520
+respect to w. We'll
+start by plugging in
+
+46
+00:02:10.520 --> 00:02:18.710
+the definition of the cost
+function J. J of WP is this.
+
+47
+00:02:18.710 --> 00:02:25.255
+1 over 2m times this sum of
+the squared error terms.
+
+48
+00:02:25.255 --> 00:02:30.420
+Now remember also that f of wb
+
+49
+00:02:30.420 --> 00:02:36.560
+of X^i is equal to
+this term over here,
+
+50
+00:02:36.560 --> 00:02:41.500
+which is WX^i plus b.
+
+51
+00:02:41.500 --> 00:02:45.365
+What we would like to do
+is compute the derivative,
+
+52
+00:02:45.365 --> 00:02:49.055
+also called the partial
+derivative with respect to
+
+53
+00:02:49.055 --> 00:02:54.725
+w of this equation right
+here on the right.
+
+54
+00:02:54.725 --> 00:02:57.305
+If you taken a
+calculus class before,
+
+55
+00:02:57.305 --> 00:02:59.885
+and again is totally
+fine if you haven't,
+
+56
+00:02:59.885 --> 00:03:02.674
+you may know that by
+the rules of calculus,
+
+57
+00:03:02.674 --> 00:03:06.770
+the derivative is equal
+to this term over here.
+
+58
+00:03:06.770 --> 00:03:12.950
+Which is why the two here
+and two here cancel out,
+
+59
+00:03:12.950 --> 00:03:15.395
+leaving us with this equation
+
+60
+00:03:15.395 --> 00:03:18.610
+that you saw on the
+previous slide.
+
+61
+00:03:18.610 --> 00:03:23.600
+This is why we had to find
+the cost function with the
+
+62
+00:03:23.600 --> 00:03:25.895
+1.5 earlier this week
+
+63
+00:03:25.895 --> 00:03:29.060
+is because it makes the
+partial derivative neater.
+
+64
+00:03:29.060 --> 00:03:31.310
+It cancels out the
+two that appears
+
+65
+00:03:31.310 --> 00:03:33.950
+from computing the derivative.
+
+66
+00:03:33.950 --> 00:03:38.000
+For the other derivative
+with respect to b,
+
+67
+00:03:38.000 --> 00:03:39.680
+this is quite similar.
+
+68
+00:03:39.680 --> 00:03:43.040
+I can write it out like
+this, and once again,
+
+69
+00:03:43.040 --> 00:03:45.650
+plugging the definition of f
+
+70
+00:03:45.650 --> 00:03:49.510
+of X^i, giving this equation.
+
+71
+00:03:49.510 --> 00:03:52.310
+By the rules of calculus,
+
+72
+00:03:52.310 --> 00:03:54.874
+this is equal to this
+
+73
+00:03:54.874 --> 00:03:58.635
+where there's no X^i
+anymore at the end.
+
+74
+00:03:58.635 --> 00:04:02.600
+The 2's cancel one small
+and you end up with
+
+75
+00:04:02.600 --> 00:04:07.000
+this expression for the
+derivative with respect to b.
+
+76
+00:04:07.000 --> 00:04:11.150
+Now you have these two
+expressions for the derivatives.
+
+77
+00:04:11.150 --> 00:04:15.850
+You can plug them into the
+gradient descent algorithm.
+
+78
+00:04:15.850 --> 00:04:18.530
+Here's the gradient
+descent algorithm
+
+79
+00:04:18.530 --> 00:04:20.105
+for linear regression.
+
+80
+00:04:20.105 --> 00:04:23.030
+You repeatedly carry
+out these updates
+
+81
+00:04:23.030 --> 00:04:26.230
+to w and b until convergence.
+
+82
+00:04:26.230 --> 00:04:30.665
+Remember that this f of x is
+a linear regression model,
+
+83
+00:04:30.665 --> 00:04:35.500
+so as equal to w times x plus b.
+
+84
+00:04:35.500 --> 00:04:37.460
+This expression here is
+
+85
+00:04:37.460 --> 00:04:40.580
+the derivative of the cost
+function with respect to
+
+86
+00:04:40.580 --> 00:04:43.100
+w. This expression is
+
+87
+00:04:43.100 --> 00:04:47.230
+the derivative of the cost
+function with respect to b.
+
+88
+00:04:47.230 --> 00:04:49.324
+Just as a reminder,
+
+89
+00:04:49.324 --> 00:04:54.235
+you want to update w and b
+simultaneously on each step.
+
+90
+00:04:54.235 --> 00:04:58.085
+Now, let's get familiar with
+how gradient descent works.
+
+91
+00:04:58.085 --> 00:05:01.430
+One the shoe we saw with
+gradient descent is that it can
+
+92
+00:05:01.430 --> 00:05:05.255
+lead to a local minimum
+instead of a global minimum.
+
+93
+00:05:05.255 --> 00:05:08.090
+Whether global minimum
+means the point that has
+
+94
+00:05:08.090 --> 00:05:10.430
+the lowest possible value
+for the cost function
+
+95
+00:05:10.430 --> 00:05:13.040
+J of all possible points.
+
+96
+00:05:13.040 --> 00:05:16.520
+You may recall this surface
+plot that looks like
+
+97
+00:05:16.520 --> 00:05:18.710
+an outdoor park with
+a few hills with
+
+98
+00:05:18.710 --> 00:05:21.575
+the process and the birds
+as a relaxing Hobo Hill.
+
+99
+00:05:21.575 --> 00:05:24.755
+This function has more
+than one local minimum.
+
+100
+00:05:24.755 --> 00:05:27.020
+Remember, depending on where
+
+101
+00:05:27.020 --> 00:05:29.480
+you initialize the
+parameters w and b,
+
+102
+00:05:29.480 --> 00:05:32.350
+you can end up at
+different local minima.
+
+103
+00:05:32.350 --> 00:05:34.085
+You can end up here,
+
+104
+00:05:34.085 --> 00:05:36.260
+or you can end up here.
+
+105
+00:05:36.260 --> 00:05:38.465
+But it turns out
+when you're using
+
+106
+00:05:38.465 --> 00:05:41.839
+a squared error cost function
+with linear regression,
+
+107
+00:05:41.839 --> 00:05:44.270
+the cost function
+does not and will
+
+108
+00:05:44.270 --> 00:05:47.180
+never have multiple
+local minima.
+
+109
+00:05:47.180 --> 00:05:49.730
+It has a single global minimum
+
+110
+00:05:49.730 --> 00:05:51.940
+because of this bowl-shape.
+
+111
+00:05:51.940 --> 00:05:54.770
+The technical term
+for this is that
+
+112
+00:05:54.770 --> 00:05:58.525
+this cost function is
+a convex function.
+
+113
+00:05:58.525 --> 00:06:01.220
+Informally, a convex function
+
+114
+00:06:01.220 --> 00:06:03.530
+is of bowl-shaped function and
+
+115
+00:06:03.530 --> 00:06:05.630
+it cannot have any local minima
+
+116
+00:06:05.630 --> 00:06:09.145
+other than the single
+global minimum.
+
+117
+00:06:09.145 --> 00:06:13.715
+When you implement gradient
+descent on a convex function,
+
+118
+00:06:13.715 --> 00:06:16.310
+one nice property is that so
+
+119
+00:06:16.310 --> 00:06:19.040
+long as you're learning rate
+is chosen appropriately,
+
+120
+00:06:19.040 --> 00:06:22.235
+it will always converge
+to the global minimum.
+
+121
+00:06:22.235 --> 00:06:24.710
+Congratulations,
+you now know how to
+
+122
+00:06:24.710 --> 00:06:27.815
+implement gradient descent
+for linear regression.
+
+123
+00:06:27.815 --> 00:06:30.890
+We have just one last
+video for this week.
+
+124
+00:06:30.890 --> 00:06:33.755
+That video, we'll see
+this algorithm in action.
+
+125
+00:06:33.755 --> 00:06:36.360
+Let's go to that last video.

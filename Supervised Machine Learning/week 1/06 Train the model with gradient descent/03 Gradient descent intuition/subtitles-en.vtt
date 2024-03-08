@@ -1,0 +1,656 @@
+WEBVTT
+
+1
+00:00:01.400 --> 00:00:05.875
+Now let's dive more deeply
+in gradient descent to gain
+
+2
+00:00:05.875 --> 00:00:07.840
+better intuition about what
+
+3
+00:00:07.840 --> 00:00:10.255
+it's doing and why
+it might make sense.
+
+4
+00:00:10.255 --> 00:00:12.445
+Here's the gradient
+descent algorithm
+
+5
+00:00:12.445 --> 00:00:14.990
+that you saw in the
+previous video.
+
+6
+00:00:14.990 --> 00:00:17.695
+As a reminder, this variable,
+
+7
+00:00:17.695 --> 00:00:20.965
+this Greek symbol Alpha,
+is the learning rate.
+
+8
+00:00:20.965 --> 00:00:24.550
+The learning rate controls
+how big of a step you take
+
+9
+00:00:24.550 --> 00:00:28.505
+when updating the model's
+parameters, w and b.
+
+10
+00:00:28.505 --> 00:00:32.760
+This term here, this d over dw,
+
+11
+00:00:32.760 --> 00:00:34.875
+this is a derivative term.
+
+12
+00:00:34.875 --> 00:00:36.660
+By convention in math,
+
+13
+00:00:36.660 --> 00:00:40.410
+this d is written with
+this funny font here.
+
+14
+00:00:40.410 --> 00:00:42.970
+In case anyone watching
+this has PhD in
+
+15
+00:00:42.970 --> 00:00:45.350
+math or is an expert in
+multivariate calculus,
+
+16
+00:00:45.350 --> 00:00:47.795
+they may be wondering,
+that's not the derivative,
+
+17
+00:00:47.795 --> 00:00:50.540
+that's the partial derivative.
+Yes, they be right.
+
+18
+00:00:50.540 --> 00:00:52.010
+But for the purposes of
+
+19
+00:00:52.010 --> 00:00:53.900
+implementing a machine
+learning algorithm,
+
+20
+00:00:53.900 --> 00:00:56.300
+I'm just going to
+call it derivative.
+
+21
+00:00:56.300 --> 00:00:59.560
+Don't worry about these
+little distinctions.
+
+22
+00:00:59.560 --> 00:01:01.940
+What we're going to focus on now
+
+23
+00:01:01.940 --> 00:01:04.250
+is get more intuition about
+
+24
+00:01:04.250 --> 00:01:07.745
+what this learning rate
+and what this derivative
+
+25
+00:01:07.745 --> 00:01:11.900
+are doing and why when
+multiplied together like this,
+
+26
+00:01:11.900 --> 00:01:15.335
+it results in updates
+to parameters w and b.
+
+27
+00:01:15.335 --> 00:01:19.430
+That makes sense. In order
+to do this let's use
+
+28
+00:01:19.430 --> 00:01:22.190
+a slightly simpler
+example where we
+
+29
+00:01:22.190 --> 00:01:25.930
+work on minimizing
+just one parameter.
+
+30
+00:01:25.930 --> 00:01:29.210
+Let's say that you have
+a cost function J of
+
+31
+00:01:29.210 --> 00:01:33.490
+just one parameter w
+with w is a number.
+
+32
+00:01:33.490 --> 00:01:37.095
+This means the gradient
+descent now looks like this.
+
+33
+00:01:37.095 --> 00:01:41.675
+W is updated to w minus
+the learning rate Alpha
+
+34
+00:01:41.675 --> 00:01:47.260
+times d over dw
+of J of w. You're
+
+35
+00:01:47.260 --> 00:01:49.700
+trying to minimize the
+cost by adjusting the
+
+36
+00:01:49.700 --> 00:01:53.540
+parameter w. This is like
+
+37
+00:01:53.540 --> 00:01:57.095
+our previous example where
+we had temporarily set b
+
+38
+00:01:57.095 --> 00:02:01.715
+equal to 0 with one
+parameter w instead of two,
+
+39
+00:02:01.715 --> 00:02:04.070
+you can look at
+two-dimensional graphs
+
+40
+00:02:04.070 --> 00:02:05.470
+of the cost function j,
+
+41
+00:02:05.470 --> 00:02:07.830
+instead of three
+dimensional graphs.
+
+42
+00:02:07.830 --> 00:02:09.485
+Let's look at what
+
+43
+00:02:09.485 --> 00:02:12.950
+gradient descent does
+on just function J of
+
+44
+00:02:12.950 --> 00:02:18.650
+w. Here on the horizontal
+axis is parameter w,
+
+45
+00:02:18.650 --> 00:02:24.350
+and on the vertical axis is
+the cost j of w. Now less
+
+46
+00:02:24.350 --> 00:02:27.120
+initialized gradient descent
+with some starting value for
+
+47
+00:02:27.120 --> 00:02:30.660
+w. Let's initialize
+it at this location.
+
+48
+00:02:30.660 --> 00:02:33.140
+Imagine that you start off at
+
+49
+00:02:33.140 --> 00:02:36.130
+this point right here
+on the function J,
+
+50
+00:02:36.130 --> 00:02:39.350
+what gradient descent
+will do is it will update
+
+51
+00:02:39.350 --> 00:02:43.340
+w to be w minus learning rate
+
+52
+00:02:43.340 --> 00:02:46.430
+Alpha times d over dw of J of
+
+53
+00:02:46.430 --> 00:02:51.560
+w. Let's look at what this
+derivative term here means.
+
+54
+00:02:51.560 --> 00:02:55.420
+A way to think about the
+derivative at this point on
+
+55
+00:02:55.420 --> 00:02:59.350
+the line is to draw
+a tangent line,
+
+56
+00:02:59.350 --> 00:03:00.910
+which is a straight line that
+
+57
+00:03:00.910 --> 00:03:03.545
+touches this curve
+at that point.
+
+58
+00:03:03.545 --> 00:03:06.550
+Enough, the slope
+of this line is
+
+59
+00:03:06.550 --> 00:03:10.120
+the derivative of the
+function j at this point.
+
+60
+00:03:10.120 --> 00:03:12.040
+To get the slope, you can
+
+61
+00:03:12.040 --> 00:03:14.645
+draw a little
+triangle like this.
+
+62
+00:03:14.645 --> 00:03:17.470
+If you compute the
+height divided by
+
+63
+00:03:17.470 --> 00:03:21.020
+the width of this triangle,
+that is the slope.
+
+64
+00:03:21.020 --> 00:03:26.055
+For example, this slope
+might be 2 over 1,
+
+65
+00:03:26.055 --> 00:03:27.790
+for instance and when
+
+66
+00:03:27.790 --> 00:03:30.405
+the tangent line is pointing
+up and to the right,
+
+67
+00:03:30.405 --> 00:03:32.284
+the slope is positive,
+
+68
+00:03:32.284 --> 00:03:36.080
+which means that this derivative
+is a positive number,
+
+69
+00:03:36.080 --> 00:03:39.100
+so is greater than 0.
+
+70
+00:03:39.100 --> 00:03:42.095
+The updated w is going to be
+
+71
+00:03:42.095 --> 00:03:46.895
+w minus the learning rate
+times some positive number.
+
+72
+00:03:46.895 --> 00:03:50.165
+The learning rate is
+always a positive number.
+
+73
+00:03:50.165 --> 00:03:53.615
+If you take w minus
+a positive number,
+
+74
+00:03:53.615 --> 00:03:58.270
+you end up with a new value
+for w, that's smaller.
+
+75
+00:03:58.270 --> 00:04:02.285
+On the graph, you're
+moving to the left,
+
+76
+00:04:02.285 --> 00:04:06.620
+you're decreasing the
+value of w. You may notice
+
+77
+00:04:06.620 --> 00:04:08.720
+that this is the right
+thing to do if your goal
+
+78
+00:04:08.720 --> 00:04:11.030
+is to decrease the cost J,
+
+79
+00:04:11.030 --> 00:04:13.775
+because when we move towards
+the left on this curve,
+
+80
+00:04:13.775 --> 00:04:15.740
+the cost j decreases,
+
+81
+00:04:15.740 --> 00:04:17.480
+and you're getting
+closer to the minimum
+
+82
+00:04:17.480 --> 00:04:20.105
+for J, which is over here.
+
+83
+00:04:20.105 --> 00:04:22.590
+So far, gradient descent,
+
+84
+00:04:22.590 --> 00:04:25.125
+seems to be doing
+the right thing.
+
+85
+00:04:25.125 --> 00:04:28.485
+Now, let's look at
+another example.
+
+86
+00:04:28.485 --> 00:04:31.350
+Let's take the same
+function j of w as above,
+
+87
+00:04:31.350 --> 00:04:33.590
+and now let's say
+that you initialized
+
+88
+00:04:33.590 --> 00:04:36.050
+gradient descent at a
+different location.
+
+89
+00:04:36.050 --> 00:04:38.780
+Say by choosing a
+starting value for
+
+90
+00:04:38.780 --> 00:04:41.920
+w that's over here on the left.
+
+91
+00:04:41.920 --> 00:04:44.910
+That's this point
+of the function j.
+
+92
+00:04:44.910 --> 00:04:47.705
+Now, the derivative term,
+
+93
+00:04:47.705 --> 00:04:53.065
+remember is d over dw of J of w,
+
+94
+00:04:53.065 --> 00:04:55.160
+and when we look at
+the tangent line
+
+95
+00:04:55.160 --> 00:04:57.005
+at this point over here,
+
+96
+00:04:57.005 --> 00:04:58.430
+the slope of this line is
+
+97
+00:04:58.430 --> 00:05:00.580
+a derivative of J at this point.
+
+98
+00:05:00.580 --> 00:05:04.790
+But this tangent line is
+sloping down into the right.
+
+99
+00:05:04.790 --> 00:05:07.010
+This lines sloping down into
+
+100
+00:05:07.010 --> 00:05:09.410
+the right has a negative slope.
+
+101
+00:05:09.410 --> 00:05:11.390
+In other words, the
+derivative of J at
+
+102
+00:05:11.390 --> 00:05:13.975
+this point is a negative number.
+
+103
+00:05:13.975 --> 00:05:16.550
+For instance, if you
+draw a triangle,
+
+104
+00:05:16.550 --> 00:05:18.800
+then the height like this is
+
+105
+00:05:18.800 --> 00:05:21.605
+negative 2 and the width is 1,
+
+106
+00:05:21.605 --> 00:05:25.220
+the slope is negative
+2 divided by 1,
+
+107
+00:05:25.220 --> 00:05:26.440
+which is negative 2,
+
+108
+00:05:26.440 --> 00:05:28.955
+which is a negative number.
+
+109
+00:05:28.955 --> 00:05:30.895
+When you update w,
+
+110
+00:05:30.895 --> 00:05:33.980
+you get w minus the
+learning rate times
+
+111
+00:05:33.980 --> 00:05:35.890
+a negative number.
+
+112
+00:05:35.890 --> 00:05:40.915
+This means you subtract
+from w, a negative number.
+
+113
+00:05:40.915 --> 00:05:44.079
+But subtracting a
+negative number
+
+114
+00:05:44.079 --> 00:05:46.810
+means adding a positive number,
+
+115
+00:05:46.810 --> 00:05:49.420
+and so you end up increasing
+
+116
+00:05:49.420 --> 00:05:53.535
+w. Because subtracting a
+negative number is the
+
+117
+00:05:53.535 --> 00:05:55.990
+same as adding a
+positive number to
+
+118
+00:05:55.990 --> 00:06:02.065
+w. This step of gradient
+descent causes w to increase,
+
+119
+00:06:02.065 --> 00:06:05.320
+which means you're moving to
+the right of the graph and
+
+120
+00:06:05.320 --> 00:06:09.485
+your cost J has
+decrease down to here.
+
+121
+00:06:09.485 --> 00:06:11.410
+Again, it looks like
+
+122
+00:06:11.410 --> 00:06:13.780
+gradient descent is doing
+something reasonable,
+
+123
+00:06:13.780 --> 00:06:16.685
+is getting you closer
+to the minimum.
+
+124
+00:06:16.685 --> 00:06:20.525
+Hopefully, these last
+two examples show
+
+125
+00:06:20.525 --> 00:06:24.020
+some of the intuition behind
+what a derivative term
+
+126
+00:06:24.020 --> 00:06:27.710
+is doing and why this host
+gradient descent change
+
+127
+00:06:27.710 --> 00:06:31.075
+w to get you closer
+to the minimum.
+
+128
+00:06:31.075 --> 00:06:34.415
+I hope this video gave
+you some sense for why
+
+129
+00:06:34.415 --> 00:06:37.970
+the derivative term in
+gradient descent makes sense.
+
+130
+00:06:37.970 --> 00:06:39.980
+One other key quantity in
+
+131
+00:06:39.980 --> 00:06:41.285
+the gradient descent algorithm
+
+132
+00:06:41.285 --> 00:06:43.115
+is the learning rate Alpha.
+
+133
+00:06:43.115 --> 00:06:44.405
+How do you choose Alpha?
+
+134
+00:06:44.405 --> 00:06:45.470
+What happens if it's too
+
+135
+00:06:45.470 --> 00:06:47.335
+small or what happens
+when it's too big?
+
+136
+00:06:47.335 --> 00:06:48.680
+In the next video,
+
+137
+00:06:48.680 --> 00:06:50.300
+let's take a deeper look at
+
+138
+00:06:50.300 --> 00:06:52.220
+the parameter Alpha to help
+
+139
+00:06:52.220 --> 00:06:54.200
+build intuitions
+about what it does,
+
+140
+00:06:54.200 --> 00:06:57.290
+as well as how to make a
+good choice for a good value
+
+141
+00:06:57.290 --> 00:07:01.380
+of Alpha for your implementation
+of gradient descent.
