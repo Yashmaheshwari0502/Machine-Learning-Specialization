@@ -4,13 +4,7 @@ Welcome to my repository for the Machine Learning and Deep Learning Specializati
 
 ## Contents
 
-1. **Code**: This directory contains all the code implementations for the assignments, quizzes, and practical exercises from the courses.
-
-2. **Notes**: Here, you'll find my personal notes summarizing the key concepts, algorithms, and techniques covered in each course module. These notes are intended for quick reference and review.
-
-3. **Videos**: This directory stores video lectures and tutorials that accompany the courses. Please note that these videos are for personal use only and should not be shared or distributed without proper authorization.
-
-
+ **Code**: This directory contains all the code implementations for the assignments, quizzes, and practical exercises from the courses.
 
 ## Getting Started
 
